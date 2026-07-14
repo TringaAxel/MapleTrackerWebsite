@@ -7,8 +7,11 @@
     <meta name="description" content="Maple Tracker helps permanent residents track their physical presence in Canada toward citizenship eligibility. Trip logging, day counting, and more. Available on iOS and Android.">
     <meta name="theme-color" content="#121212">
     <link rel="apple-touch-icon" href="../CanadaProject/Assets.xcassets/AppIcon.appiconset/Icon-iOS-Default-1024x1024@1x.png">
+    <link rel="stylesheet" href="nav.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         :root {
             --bg: #121212;
@@ -30,47 +33,6 @@
             line-height: 1.7;
             overflow-x: hidden;
         }
-
-        /* ── Nav ── */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(18,18,18,.85);
-            -webkit-backdrop-filter: blur(20px);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            padding: 0 24px;
-        }
-        .nav-inner {
-            max-width: 1080px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 56px;
-        }
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 700;
-            font-size: 17px;
-        }
-        .nav-brand .maple { color: var(--red); font-size: 20px; }
-        .nav-links { display: flex; gap: 28px; list-style: none; }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color .2s;
-        }
-        .nav-links a:hover { color: var(--white); }
 
         /* ── Hero ── */
         .hero {
@@ -107,6 +69,25 @@
             opacity: .08;
         }
         .hero-content { position: relative; z-index: 1; max-width: 700px; }
+        @keyframes heroIn {
+            from { opacity: 0; transform: translateY(28px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .hero-content > * { animation: heroIn .8s cubic-bezier(.22,1,.36,1) backwards; }
+        .hero-content > :nth-child(1) { animation-delay: .05s; }
+        .hero-content > :nth-child(2) { animation-delay: .15s; }
+        .hero-content > :nth-child(3) { animation-delay: .25s; }
+        .hero-content > :nth-child(4) { animation-delay: .35s; }
+        .hero-content > :nth-child(5) { animation-delay: .45s; }
+        .hero-content > :nth-child(6) { animation-delay: .55s; }
+        .hero-icon svg { animation: heroFloat 6s ease-in-out 1.2s infinite; }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-content > *, .hero-icon svg { animation: none; }
+        }
         .hero-icon {
             width: 88px;
             height: 88px;
@@ -162,16 +143,17 @@
             color: var(--white);
             font-size: 16px;
             font-weight: 600;
-            padding: 14px 32px;
-            border-radius: 14px;
+            padding: 15px 32px;
+            border-radius: 99px;
             text-decoration: none;
-            transition: transform .2s, box-shadow .2s;
+            transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
             box-shadow: 0 4px 24px rgba(255,59,48,.3);
         }
         .hero-cta:hover {
-            transform: translateY(-2px);
+            transform: scale(1.05);
             box-shadow: 0 8px 32px rgba(255,59,48,.4);
         }
+        .hero-cta:active { transform: scale(.95); }
         .hero-cta svg { width: 20px; height: 20px; }
         .hero-sub {
             margin-top: 14px;
@@ -180,7 +162,7 @@
         }
 
         /* ── Sections ── */
-        section { padding: 100px 24px; }
+        section { padding: 100px 24px; scroll-margin-top: 64px; }
         .section-header {
             text-align: center;
             margin-bottom: 60px;
@@ -456,9 +438,17 @@
         /* ── Maple leaf SVG ── */
         .maple-svg { fill: var(--red); }
 
+        /* ── Scroll-reveal stagger ── */
+        .features-grid .reveal:nth-child(2), .steps .reveal:nth-child(2),
+        .stats-grid .reveal:nth-child(2), .privacy-grid .reveal:nth-child(2) { --d: .08s; }
+        .features-grid .reveal:nth-child(3), .steps .reveal:nth-child(3),
+        .stats-grid .reveal:nth-child(3), .privacy-grid .reveal:nth-child(3) { --d: .16s; }
+        .features-grid .reveal:nth-child(4), .privacy-grid .reveal:nth-child(4) { --d: .24s; }
+        .features-grid .reveal:nth-child(5) { --d: .32s; }
+        .features-grid .reveal:nth-child(6) { --d: .4s; }
+
         /* ── Responsive ── */
         @media (max-width: 640px) {
-            .nav-links { display: none; }
             .features-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: 1fr; gap: 32px; }
             .hero { padding: 100px 20px 60px; }
@@ -473,19 +463,47 @@
 <body>
 
 <!-- Nav -->
-<nav>
+<nav class="site-nav">
     <div class="nav-inner">
-        <a href="#" class="nav-brand">
-            <span class="maple">🍁</span> Maple Tracker
+        <a href="#" class="nav-logo" aria-label="Maple Tracker — Home">
+            <svg viewBox="-1953 -2031 3906 4061" xmlns="http://www.w3.org/2000/svg">
+                <path d="M-90 2030 L-45 1167 L-156 1069 L-1015 1220 L-899 900 L-919 827 L-1860 65 L-1648 -34 L-1614 -113 L-1800 -685 L-1258 -570 L-1185 -608 L-1080 -855 L-657 -401 L-546 -458 L-750 -1510 L-423 -1321 L-332 -1348 L0 -2000 L332 -1348 L423 -1321 L750 -1510 L546 -458 L657 -401 L1080 -855 L1185 -608 L1258 -570 L1800 -685 L1614 -113 L1648 -34 L1860 65 L919 827 L899 900 L1015 1220 L156 1069 L45 1167 L90 2030 Z"/>
+            </svg>
         </a>
-        <ul class="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#quiz">Quiz</a></li>
-            <li><a href="#privacy">Privacy</a></li>
-        </ul>
+        <div class="nav-actions">
+            <a href="#features" class="nav-textlink">Features <span class="arrow">→</span></a>
+            <a href="#cta" class="nav-pill">Get the app</a>
+            <button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </div>
 </nav>
+
+<!-- Full-screen menu -->
+<div class="menu-overlay">
+    <div class="menu-inner">
+        <nav class="menu-links" aria-label="Site menu">
+            <a href="#features" style="--i: 0">Features</a>
+            <a href="#how-it-works" style="--i: 1">How It Works</a>
+            <a href="#quiz" style="--i: 2">Quiz</a>
+            <a href="#privacy" style="--i: 3">Privacy</a>
+            <a href="privacy-policy.html" style="--i: 4">Privacy Policy</a>
+            <a href="terms-of-service.html" style="--i: 5">Terms of Service</a>
+        </nav>
+        <div class="menu-stores">
+            <a href="https://apps.apple.com/ca/app/maple-countdown/id6758927692" class="store-pill primary">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                App Store
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.axeltringa.mapletracker" class="store-pill ghost">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                Google Play
+            </a>
+        </div>
+    </div>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -518,38 +536,38 @@
 
 <!-- Features -->
 <section id="features">
-    <div class="section-header">
+    <div class="section-header reveal">
         <div class="section-label">Features</div>
         <h2>Everything You Need to Track Your Eligibility</h2>
         <p>Designed specifically for Canadian permanent residents navigating the citizenship process.</p>
     </div>
     <div class="features-grid">
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <div class="feature-icon">📊</div>
             <h3>Real-Time Dashboard</h3>
             <p>See your progress toward 1,095 days at a glance with a visual progress ring, estimated eligibility date, and daily updates.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <div class="feature-icon">✈️</div>
             <h3>Trip Logging</h3>
             <p>Record every trip outside Canada with departure & return dates, destination country, and optional notes. Days away are automatically deducted.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <div class="feature-icon">📍</div>
             <h3>Automatic Detection</h3>
             <p>Enable location services and Maple Tracker detects when you leave or return to Canada — creating trip records automatically.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <div class="feature-icon">☁️</div>
             <h3>iCloud Sync (iOS)</h3>
             <p>On iOS, your data syncs seamlessly across your Apple devices via iCloud. On Android, everything stays 100% on your device.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <div class="feature-icon">🍁</div>
             <h3>Citizenship Quiz</h3>
             <p>Prepare for the citizenship test with 60+ questions covering Canadian history, politics, geography, rights, and symbols.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
             <div class="feature-icon">🔔</div>
             <h3>Smart Notifications</h3>
             <p>Receive daily or weekly reminders with your current day count and milestones. Stay motivated on your journey to citizenship.</p>
@@ -559,27 +577,27 @@
 
 <!-- How It Works -->
 <section id="how-it-works">
-    <div class="section-header">
+    <div class="section-header reveal">
         <div class="section-label">How It Works</div>
         <h2>Three Simple Steps</h2>
         <p>Get started in minutes and let Maple Tracker do the counting.</p>
     </div>
     <div class="steps">
-        <div class="step">
+        <div class="step reveal">
             <div class="step-num">1</div>
             <div class="step-content">
                 <h3>Set Up Your Profile</h3>
                 <p>Enter your permanent residence date and your first arrival in Canada. If you had time as a temporary resident, Maple Tracker credits those days at 50% (up to 365 days).</p>
             </div>
         </div>
-        <div class="step">
+        <div class="step reveal">
             <div class="step-num">2</div>
             <div class="step-content">
                 <h3>Log Your Trips</h3>
                 <p>Add any trips you've taken outside of Canada — manually or let automatic location tracking handle it for you. Every day away is tracked and deducted.</p>
             </div>
         </div>
-        <div class="step">
+        <div class="step reveal">
             <div class="step-num">3</div>
             <div class="step-content">
                 <h3>Track Your Progress</h3>
@@ -592,15 +610,15 @@
 <!-- Stats -->
 <section id="stats">
     <div class="stats-grid">
-        <div class="stat-item">
+        <div class="stat-item reveal">
             <h3>1,095</h3>
             <p>Days of physical presence required</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item reveal">
             <h3>5 yrs</h3>
             <p>Rolling window for eligibility</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item reveal">
             <h3>60+</h3>
             <p>Citizenship quiz questions</p>
         </div>
@@ -609,12 +627,12 @@
 
 <!-- Quiz Preview -->
 <section id="quiz">
-    <div class="section-header">
+    <div class="section-header reveal">
         <div class="section-label">Citizenship Quiz</div>
         <h2>Are You Ready for the Test?</h2>
         <p>Practice with real questions from the "Discover Canada" study guide, organized by category and province.</p>
     </div>
-    <div class="quiz-preview">
+    <div class="quiz-preview reveal">
         <div class="quiz-question">What is the capital city of Canada?</div>
         <div class="quiz-options">
             <div class="quiz-option">Toronto</div>
@@ -627,28 +645,28 @@
 
 <!-- Privacy -->
 <section id="privacy">
-    <div class="section-header">
+    <div class="section-header reveal">
         <div class="section-label">Privacy First</div>
         <h2>Your Data Stays Yours</h2>
         <p>Maple Tracker is built with privacy at its core. We never see your personal information.</p>
     </div>
     <div class="privacy-grid">
-        <div class="privacy-item">
+        <div class="privacy-item reveal">
             <div class="icon">🔒</div>
             <h3>On-Device Storage</h3>
             <p>All trip and residency data is stored locally on your device — never on our servers.</p>
         </div>
-        <div class="privacy-item">
+        <div class="privacy-item reveal">
             <div class="icon">📍</div>
             <h3>Local Processing</h3>
             <p>Location data is processed entirely on-device. We never receive your GPS coordinates.</p>
         </div>
-        <div class="privacy-item">
+        <div class="privacy-item reveal">
             <div class="icon">👤</div>
             <h3>No Account Required</h3>
             <p>No sign-up, no email, no identity. Just download and start tracking.</p>
         </div>
-        <div class="privacy-item">
+        <div class="privacy-item reveal">
             <div class="icon">🍎</div>
             <h3>Apple iCloud</h3>
             <p>Optional sync on iOS uses Apple's encrypted iCloud infrastructure — the Android version keeps everything on-device.</p>
@@ -658,9 +676,9 @@
 
 <!-- CTA -->
 <section id="cta">
-    <h2>Start Your Journey Today</h2>
-    <p>Join permanent residents across Canada who are tracking their path to citizenship with Maple Tracker.</p>
-    <div class="hero-ctas">
+    <h2 class="reveal">Start Your Journey Today</h2>
+    <p class="reveal" style="--d: .08s">Join permanent residents across Canada who are tracking their path to citizenship with Maple Tracker.</p>
+    <div class="hero-ctas reveal" style="--d: .16s">
         <a href="https://apps.apple.com/ca/app/maple-countdown/id6758927692" class="hero-cta">
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             Download on the App Store
@@ -686,5 +704,6 @@
     </div>
 </footer>
 
+<script src="nav.js"></script>
 </body>
 </html>

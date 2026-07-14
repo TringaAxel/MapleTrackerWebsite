@@ -1,0 +1,253 @@
+/* ── Cash App-style navigation, Maple Tracker theme ── */
+
+.site-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 16px 24px;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background .35s ease, padding .35s ease, border-color .35s ease;
+}
+.site-nav.scrolled {
+    background: rgba(18,18,18,.82);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border-bottom-color: #2C2C2E;
+    padding: 10px 24px;
+}
+body.menu-open .site-nav {
+    background: transparent;
+    border-bottom-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+.site-nav .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo: rounded red square with white maple leaf */
+.nav-logo {
+    width: 46px; height: 46px;
+    flex-shrink: 0;
+    background: #FF3B30;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(255,59,48,.25);
+    transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+}
+.nav-logo:hover { transform: scale(1.07) rotate(-4deg); box-shadow: 0 6px 28px rgba(255,59,48,.4); }
+.nav-logo:active { transform: scale(.93); }
+.nav-logo svg { width: 26px; height: 26px; fill: #ffffff; }
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Text link with sliding arrow (cash.app "Sign up →") */
+.nav-textlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    margin-right: 8px;
+}
+.nav-textlink .arrow { transition: transform .25s ease; }
+.nav-textlink:hover .arrow { transform: translateX(4px); }
+
+/* Pill button (cash.app "Log in") */
+.nav-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FF3B30;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 22px;
+    border-radius: 99px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(255,59,48,.25);
+    transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+}
+.nav-pill:hover { transform: scale(1.05); box-shadow: 0 6px 28px rgba(255,59,48,.4); }
+.nav-pill:active { transform: scale(.95); }
+
+/* Round burger button */
+.nav-burger {
+    width: 46px; height: 46px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #1C1C1E;
+    border: 1px solid #2C2C2E;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0;
+    transition: transform .25s cubic-bezier(.34,1.56,.64,1), background .25s;
+}
+.nav-burger:hover { transform: scale(1.07); background: #2C2C2E; }
+.nav-burger:active { transform: scale(.93); }
+.nav-burger span {
+    display: block;
+    width: 18px; height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: transform .3s ease;
+}
+body.menu-open .nav-burger span:first-child { transform: translateY(3.5px) rotate(45deg); }
+body.menu-open .nav-burger span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+
+/* ── Full-screen menu overlay ── */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: #121212;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s ease, visibility 0s linear .4s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 110px 24px 56px;
+    overflow-y: auto;
+}
+.menu-overlay::before {
+    content: '';
+    position: fixed;
+    width: 640px; height: 640px;
+    border-radius: 50%;
+    background: #FF3B30;
+    filter: blur(160px);
+    opacity: .10;
+    top: -220px; left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+body.menu-open { overflow: hidden; }
+body.menu-open .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .4s ease;
+}
+
+.menu-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    width: 100%;
+}
+.menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.menu-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: clamp(38px, 7vw, 64px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.18;
+    width: fit-content;
+    padding-left: 0;
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        color .2s ease,
+        padding-left .25s ease,
+        opacity .5s ease,
+        transform .5s cubic-bezier(.22,1,.36,1);
+}
+.menu-links a:hover { color: #FF3B30; padding-left: 14px; }
+body.menu-open .menu-links a {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0s, 0s, calc(80ms + var(--i, 0) * 55ms), calc(80ms + var(--i, 0) * 55ms);
+}
+
+.menu-stores {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 44px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1);
+}
+body.menu-open .menu-stores {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 420ms;
+}
+.menu-stores .store-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 99px;
+    text-decoration: none;
+    transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s, background .25s;
+}
+.menu-stores .store-pill:hover { transform: scale(1.05); }
+.menu-stores .store-pill:active { transform: scale(.95); }
+.menu-stores .store-pill svg { width: 18px; height: 18px; }
+.menu-stores .store-pill.primary {
+    background: #FF3B30;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(255,59,48,.25);
+}
+.menu-stores .store-pill.primary:hover { box-shadow: 0 6px 28px rgba(255,59,48,.4); }
+.menu-stores .store-pill.ghost {
+    background: #1C1C1E;
+    color: #ffffff;
+    border: 1px solid #2C2C2E;
+}
+.menu-stores .store-pill.ghost:hover { background: #2C2C2E; }
+
+/* ── Scroll-reveal helper ──
+   Scoped to html.js (set by nav.js) so content stays visible if JS fails. */
+html.js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+    transition-delay: var(--d, 0s);
+}
+html.js .reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (max-width: 640px) {
+    .nav-textlink { display: none; }
+    .site-nav { padding: 12px 16px; }
+    .site-nav.scrolled { padding: 8px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-nav, .nav-logo, .nav-pill, .nav-burger, .nav-burger span,
+    .menu-overlay, .menu-links a, .menu-stores, .menu-stores .store-pill,
+    html.js .reveal {
+        transition: none !important;
+        opacity: 1;
+        transform: none;
+    }
+    body.menu-open .menu-links a, body.menu-open .menu-stores { transition-delay: 0s; }
+}
