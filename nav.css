@@ -30,12 +30,13 @@ body.menu-open .site-nav {
     justify-content: space-between;
 }
 
-/* Logo: rounded red square with white maple leaf */
+/* Logo: the actual app icon (rounded, subtle border to lift it off the page) */
 .nav-logo {
     width: 46px; height: 46px;
     flex-shrink: 0;
-    background: #FF3B30;
     border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #2C2C2E;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,7 +46,7 @@ body.menu-open .site-nav {
 }
 .nav-logo:hover { transform: scale(1.07) rotate(-4deg); box-shadow: 0 6px 28px rgba(255,59,48,.4); }
 .nav-logo:active { transform: scale(.93); }
-.nav-logo svg { width: 26px; height: 26px; fill: #ffffff; }
+.nav-logo img { width: 100%; height: 100%; display: block; }
 
 .nav-actions {
     display: flex;

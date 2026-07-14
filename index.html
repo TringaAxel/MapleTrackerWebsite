@@ -6,7 +6,8 @@
     <title>Maple Tracker – Track Your Path to Canadian Citizenship</title>
     <meta name="description" content="Maple Tracker helps permanent residents track their physical presence in Canada toward citizenship eligibility. Trip logging, day counting, and more. Available on iOS and Android.">
     <meta name="theme-color" content="#121212">
-    <link rel="apple-touch-icon" href="../CanadaProject/Assets.xcassets/AppIcon.appiconset/Icon-iOS-Default-1024x1024@1x.png">
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
     <link rel="stylesheet" href="nav.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -84,22 +85,20 @@
         .hero-content > :nth-child(4) { animation-delay: .35s; }
         .hero-content > :nth-child(5) { animation-delay: .45s; }
         .hero-content > :nth-child(6) { animation-delay: .55s; }
-        .hero-icon svg { animation: heroFloat 6s ease-in-out 1.2s infinite; }
+        .hero-icon { animation: heroIn .8s cubic-bezier(.22,1,.36,1) backwards, heroFloat 6s ease-in-out 1.2s infinite; }
         @media (prefers-reduced-motion: reduce) {
-            .hero-content > *, .hero-icon svg { animation: none; }
+            .hero-content > *, .hero-icon { animation: none; }
         }
         .hero-icon {
-            width: 88px;
-            height: 88px;
+            width: 96px;
+            height: 96px;
             margin: 0 auto 28px;
-            background: rgba(255,59,48,.1);
-            border: 1px solid rgba(255,59,48,.25);
+            border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(255,59,48,.25);
         }
-        .hero-icon svg { width: 48px; height: 48px; }
+        .hero-icon img { width: 100%; height: 100%; display: block; }
         .hero-badge {
             display: inline-block;
             background: rgba(255,59,48,.12);
@@ -435,9 +434,6 @@
         }
         .footer-links a:hover { color: var(--white); }
 
-        /* ── Maple leaf SVG ── */
-        .maple-svg { fill: var(--red); }
-
         /* ── Scroll-reveal stagger ── */
         .features-grid .reveal:nth-child(2), .steps .reveal:nth-child(2),
         .stats-grid .reveal:nth-child(2), .privacy-grid .reveal:nth-child(2) { --d: .08s; }
@@ -466,9 +462,7 @@
 <nav class="site-nav">
     <div class="nav-inner">
         <a href="#" class="nav-logo" aria-label="Maple Tracker — Home">
-            <svg viewBox="-1953 -2031 3906 4061" xmlns="http://www.w3.org/2000/svg">
-                <path d="M-90 2030 L-45 1167 L-156 1069 L-1015 1220 L-899 900 L-919 827 L-1860 65 L-1648 -34 L-1614 -113 L-1800 -685 L-1258 -570 L-1185 -608 L-1080 -855 L-657 -401 L-546 -458 L-750 -1510 L-423 -1321 L-332 -1348 L0 -2000 L332 -1348 L423 -1321 L750 -1510 L546 -458 L657 -401 L1080 -855 L1185 -608 L1258 -570 L1800 -685 L1614 -113 L1648 -34 L1860 65 L919 827 L899 900 L1015 1220 L156 1069 L45 1167 L90 2030 Z"/>
-            </svg>
+            <img src="app-icon.png" alt="">
         </a>
         <div class="nav-actions">
             <a href="#features" class="nav-textlink">Features <span class="arrow">→</span></a>
@@ -513,9 +507,7 @@
     </div>
     <div class="hero-content">
         <div class="hero-icon">
-            <svg viewBox="-1953 -2031 3906 4061" class="maple-svg">
-                <path d="M-90 2030 L-45 1167 L-156 1069 L-1015 1220 L-899 900 L-919 827 L-1860 65 L-1648 -34 L-1614 -113 L-1800 -685 L-1258 -570 L-1185 -608 L-1080 -855 L-657 -401 L-546 -458 L-750 -1510 L-423 -1321 L-332 -1348 L0 -2000 L332 -1348 L423 -1321 L750 -1510 L546 -458 L657 -401 L1080 -855 L1185 -608 L1258 -570 L1800 -685 L1614 -113 L1648 -34 L1860 65 L919 827 L899 900 L1015 1220 L156 1069 L45 1167 L90 2030 Z"/>
-            </svg>
+            <img src="app-icon.png" alt="Maple Tracker app icon">
         </div>
         <div class="hero-badge">iOS &amp; Android App for Permanent Residents</div>
         <h1>Track Your Path to <span>Canadian Citizenship</span></h1>
