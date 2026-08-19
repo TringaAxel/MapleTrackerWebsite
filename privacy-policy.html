@@ -1,207 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy – Maple Tracker</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-            background-color: #121212;
-            color: #a0a0a0;
-            line-height: 1.7;
-            padding: 0;
-        }
-        .header {
-            background-color: #1C1C1E;
-            border-bottom: 1px solid #2C2C2E;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .header h1 {
-            color: #ffffff;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-        }
-        .header .app-name {
-            color: #FF3B30;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-        .header .updated {
-            color: #666;
-            font-size: 12px;
-        }
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 40px 24px 80px;
-        }
-        .section {
-            margin-bottom: 32px;
-        }
-        .section h2 {
-            color: #e0e0e0;
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .section p, .section ul {
-            font-size: 15px;
-            color: #a0a0a0;
-        }
-        .section ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 8px;
-        }
-        .section ul li {
-            padding-left: 16px;
-            position: relative;
-            margin-bottom: 4px;
-        }
-        .section ul li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #FF3B30;
-        }
-        a {
-            color: #FF3B30;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid #2C2C2E;
-            color: #555;
-            font-size: 13px;
-        }
-        .footer a {
-            color: #888;
-            margin: 0 12px;
-        }
-        .maple-icon {
-            display: inline-block;
-            color: #FF3B30;
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Privacy Policy — Maple Tracker</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="header">
-        <div class="maple-icon">🍁</div>
-        <div class="app-name">Maple Tracker</div>
-        <h1>Privacy Policy</h1>
-        <div class="updated">Last updated: February 17, 2026</div>
+<body class="legal-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><nav class="nav shell" aria-label="Primary navigation">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 42"><path d="M20 1.5l3.3 7.1 5.6-3-1.4 8 7.5-1.2-4.7 6.2 5.5 3-8.2 3.7 1.5 6.2-7.1-1.3.5 10.3h-5L18 30.2l-7.1 1.3 1.5-6.2-8.2-3.7 5.5-3L5 12.4l7.5 1.2-1.4-8 5.6 3L20 1.5z"/></svg></span><span>Maple Tracker</span></a>
+    <div class="nav-links"><a href="index.html#features">Features</a><a href="index.html#privacy">Privacy</a><a href="index.html#faq">FAQ</a></div>
+    <a class="nav-cta" href="https://apps.apple.com/ca/app/maple-countdown/id6758927692">Get the app</a>
+  </nav></header>
+  <main id="main">
+    <section class="legal-hero"><div class="shell"><p class="eyebrow"><span></span> Maple Tracker</p><h1>Privacy<br><em>Policy.</em></h1><span class="updated">Last updated: August 18, 2026</span></div></section>
+    <div class="legal-content">
+      <section class="section"><h2>1. Introduction</h2><p>Axel Tringa ("we", "us", "our") operates Maple Tracker (the "App"). This Privacy Policy explains how we collect, use, and protect your information when you use the App.</p></section>
+      <section class="section"><h2>2. Data Stored Locally</h2><p>The App stores your trip history, residency dates, citizenship calculations, preferences, and settings on your device. If automatic trip detection is enabled, recent location samples may include latitude, longitude, timestamp, and detected country. Location history is limited and used to identify border crossings.</p><p>This information remains on your device unless you enable the applicable iCloud synchronization options.</p></section>
+      <section class="section"><h2>3. iCloud Sync</h2><p>If you enable iCloud sync, your trip and residency data is synchronized through your private Apple iCloud account. Location samples are synchronized only when you separately enable Location History Sync in Settings. Apple manages and protects this data through iCloud; Maple Tracker does not operate a server that receives your trip or location history.</p></section>
+      <section class="section"><h2>4. Location Data</h2><p>If you grant location permission, the App uses precise location samples to determine the country you are in and detect when you leave or return to Canada. Country detection is performed on your device. Location samples are stored locally and are not sent to Google Firebase or to a Maple Tracker server. If you enable both iCloud Sync and Location History Sync, those samples may be stored in your private iCloud account.</p><p>You can stop future collection by disabling Automatic Tracking in the App or revoking location permission in iOS Settings.</p></section>
+      <section class="section"><h2>5. Firebase Services</h2><p>We use Google Firebase for:</p><ul><li><strong>Push notifications:</strong> Firebase Messaging processes an app instance identifier and device notification token so notifications can be delivered.</li><li><strong>Optional usage analytics:</strong> Firebase Analytics may process product-interaction events, app/device information, and identifiers used to measure feature usage. We do not use analytics for advertising or cross-app tracking.</li></ul><p>Analytics is disabled by default and is enabled only if you turn on Usage Analytics in Maple Tracker Settings. You can disable it at any time; doing so also resets the local Firebase Analytics identifier.</p></section>
+      <section class="section"><h2>6. Data We Do NOT Collect</h2><p>We do not request or collect your name, email address, immigration documents, financial information, contacts, or photos. Maple Tracker does not sell personal data and does not use your data for advertising or tracking across other companies' apps or websites.</p></section>
+      <section class="section"><h2>7. Data Retention</h2><p>Trip, residency, and location data remains on your device until you delete it or reset Maple Tracker. Deleting the App removes its local data. Data synchronized to iCloud may remain in your private iCloud account until you use Reset Cloud Data in Maple Tracker Settings or manage the App's iCloud data through your Apple ID settings. Firebase retains notification and optional analytics data according to Google's applicable retention controls.</p></section>
+      <section class="section"><h2>8. Third-Party Services</h2><p>The App uses the following third-party services:</p><ul><li>Apple iCloud (data sync)</li><li>Google Firebase (notifications and optional analytics)</li></ul><p>Each service has its own privacy policy that governs its handling of data.</p></section>
+      <section class="section"><h2>9. Children's Privacy</h2><p>The App is not intended for use by children under the age of 13. We do not knowingly collect information from children.</p></section>
+      <section class="section"><h2>10. Changes to This Policy</h2><p>We may update this Privacy Policy from time to time. Changes will be reflected in the "Last updated" date above.</p></section>
+      <section class="section"><h2>11. Contact Us</h2><p>If you have questions about this Privacy Policy, contact us at <a href="mailto:axel@mapletracker.ca">axel@mapletracker.ca</a>.</p></section>
     </div>
-
-    <div class="container">
-        <div class="section">
-            <h2>1. Introduction</h2>
-            <p>Axel Tringa ("we", "us", "our") operates Maple Tracker (the "App"). This Privacy Policy explains how we collect, use, and protect your information when you use the App.</p>
-        </div>
-
-        <div class="section">
-            <h2>2. Data Stored Locally</h2>
-            <p>The following data is stored exclusively on your device:</p>
-            <ul>
-                <li>Trip history (departure/return dates, destinations)</li>
-                <li>Permanent residence date and arrival date</li>
-                <li>Citizenship day calculations</li>
-                <li>Profile preferences and settings</li>
-                <li>Display theme preference (Light or Dark)</li>
-                <li>Language preference</li>
-            </ul>
-            <p style="margin-top: 8px;">This data never leaves your device unless you enable iCloud sync.</p>
-        </div>
-
-        <div class="section">
-            <h2>3. iCloud Sync</h2>
-            <p>If you enable iCloud sync, your trip and residency data is synced across your devices via Apple's iCloud service. This data is encrypted and managed by Apple's iCloud infrastructure. We do not have access to your iCloud data.</p>
-        </div>
-
-        <div class="section">
-            <h2>4. Location Data</h2>
-            <p>If you grant location permissions, the App uses your device's location to detect when you leave or return to Canada. Location data is:</p>
-            <ul>
-                <li>Processed entirely on your device</li>
-                <li>Never sent to our servers or any third party</li>
-                <li>Used only to create trip records</li>
-                <li>Deletable at any time by revoking location permissions</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>5. Firebase Services</h2>
-            <p>We use Google Firebase for:</p>
-            <ul>
-                <li><strong>Push notifications:</strong> To send you daily updates and reminders. Firebase receives a device token but no personal data.</li>
-                <li><strong>Analytics:</strong> To understand general app usage patterns (screens visited, feature usage). This data is anonymized and aggregated.</li>
-            </ul>
-            <p style="margin-top: 8px;">You can opt out of analytics by disabling it in your device settings.</p>
-        </div>
-
-        <div class="section">
-            <h2>6. Data We Do NOT Collect</h2>
-            <p>We do not collect:</p>
-            <ul>
-                <li>Your name, email, or identity</li>
-                <li>Your immigration status or documents</li>
-                <li>Your exact GPS coordinates (only country-level detection)</li>
-                <li>Financial information</li>
-                <li>Contacts or photos</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>7. Data Retention</h2>
-            <p>All personal data is stored on your device and/or your iCloud account. If you delete the App, all local data is permanently removed. iCloud data can be managed through your Apple ID settings.</p>
-        </div>
-
-        <div class="section">
-            <h2>8. Third-Party Services</h2>
-            <p>The App uses the following third-party services:</p>
-            <ul>
-                <li>Apple iCloud (data sync)</li>
-                <li>Google Firebase (notifications & analytics)</li>
-            </ul>
-            <p style="margin-top: 8px;">Each service has its own privacy policy that governs their handling of data.</p>
-        </div>
-
-        <div class="section">
-            <h2>9. Children's Privacy</h2>
-            <p>The App is not intended for use by children under the age of 13. We do not knowingly collect information from children.</p>
-        </div>
-
-        <div class="section">
-            <h2>10. Changes to This Policy</h2>
-            <p>We may update this Privacy Policy from time to time. Changes will be reflected in the "Last updated" date above.</p>
-        </div>
-
-        <div class="section">
-            <h2>11. Contact Us</h2>
-            <p>If you have questions about this Privacy Policy, contact us at <a href="mailto:me@axeltringa.ca">me@axeltringa.ca</a>.</p>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>© 2026 Axel Tringa. All rights reserved.</p>
-        <p style="margin-top: 8px;">
-            <a href="index.html">Home</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-service.html">Terms of Service</a>
-        </p>
-    </div>
+  </main>
+  <footer class="site-footer"><div class="shell footer-grid"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 42"><path d="M20 1.5l3.3 7.1 5.6-3-1.4 8 7.5-1.2-4.7 6.2 5.5 3-8.2 3.7 1.5 6.2-7.1-1.3.5 10.3h-5L18 30.2l-7.1 1.3 1.5-6.2-8.2-3.7 5.5-3L5 12.4l7.5 1.2-1.4-8 5.6 3L20 1.5z"/></svg></span><span>Maple Tracker</span></a><p>Independent citizenship presence tracking for iPhone.</p><div class="footer-links"><a href="privacy-policy.html">Privacy</a><a href="terms-of-service.html">Terms</a><a href="mailto:axel@mapletracker.ca">Contact</a></div></div><div class="shell footer-bottom"><span>© 2026 Axel Tringa</span><span>Made in Canada</span></div></footer>
 </body>
 </html>

@@ -1,672 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maple Tracker – Track Your Path to Canadian Citizenship</title>
-    <meta name="description" content="Maple Tracker helps permanent residents track their physical presence in Canada toward citizenship eligibility. Trip logging, day counting, and more.">
-    <meta name="theme-color" content="#121212">
-    <link rel="apple-touch-icon" href="../CanadaProject/Assets.xcassets/AppIcon.appiconset/Icon-iOS-Default-1024x1024@1x.png">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --bg: #121212;
-            --card: #1C1C1E;
-            --border: #2C2C2E;
-            --red: #FF3B30;
-            --green: #40CC66;
-            --text: #a0a0a0;
-            --text-secondary: #98989D;
-            --white: #ffffff;
-            --radius-sm: 16px;
-            --radius-md: 24px;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* ── Nav ── */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(18,18,18,.85);
-            -webkit-backdrop-filter: blur(20px);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            padding: 0 24px;
-        }
-        .nav-inner {
-            max-width: 1080px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 56px;
-        }
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 700;
-            font-size: 17px;
-        }
-        .nav-brand .maple { color: var(--red); font-size: 20px; }
-        .nav-links { display: flex; gap: 28px; list-style: none; }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color .2s;
-        }
-        .nav-links a:hover { color: var(--white); }
-
-        /* ── Hero ── */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 24px 80px;
-            overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-        .hero-bg .glow {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: .15;
-        }
-        .hero-bg .glow-1 {
-            width: 600px; height: 600px;
-            background: var(--red);
-            top: -200px; left: 50%;
-            transform: translateX(-50%);
-        }
-        .hero-bg .glow-2 {
-            width: 400px; height: 400px;
-            background: var(--red);
-            bottom: -100px; right: -100px;
-            opacity: .08;
-        }
-        .hero-content { position: relative; z-index: 1; max-width: 700px; }
-        .hero-icon {
-            width: 88px;
-            height: 88px;
-            margin: 0 auto 28px;
-            background: rgba(255,59,48,.1);
-            border: 1px solid rgba(255,59,48,.25);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-icon svg { width: 48px; height: 48px; }
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255,59,48,.12);
-            color: var(--red);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 6px 16px;
-            border-radius: 99px;
-            border: 1px solid rgba(255,59,48,.2);
-            margin-bottom: 24px;
-        }
-        .hero h1 {
-            color: var(--white);
-            font-size: clamp(32px, 5vw, 52px);
-            font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 1.15;
-            margin-bottom: 20px;
-        }
-        .hero h1 span { color: var(--red); }
-        .hero p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 520px;
-            margin: 0 auto 36px;
-            line-height: 1.7;
-        }
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--red);
-            color: var(--white);
-            font-size: 16px;
-            font-weight: 600;
-            padding: 14px 32px;
-            border-radius: 14px;
-            text-decoration: none;
-            transition: transform .2s, box-shadow .2s;
-            box-shadow: 0 4px 24px rgba(255,59,48,.3);
-        }
-        .hero-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(255,59,48,.4);
-        }
-        .hero-cta svg { width: 20px; height: 20px; }
-        .hero-sub {
-            margin-top: 14px;
-            font-size: 13px;
-            color: #555;
-        }
-
-        /* ── Sections ── */
-        section { padding: 100px 24px; }
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-label {
-            color: var(--red);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-        }
-        .section-header h2 {
-            color: var(--white);
-            font-size: clamp(26px, 4vw, 38px);
-            font-weight: 700;
-            letter-spacing: -.5px;
-            margin-bottom: 14px;
-        }
-        .section-header p {
-            color: var(--text-secondary);
-            font-size: 16px;
-            max-width: 540px;
-            margin: 0 auto;
-        }
-
-        /* ── Features Grid ── */
-        #features { background: var(--bg); }
-        .features-grid {
-            max-width: 1080px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .feature-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 32px 28px;
-            transition: border-color .25s, transform .25s;
-        }
-        .feature-card:hover {
-            border-color: rgba(255,59,48,.3);
-            transform: translateY(-4px);
-        }
-        .feature-icon {
-            width: 48px; height: 48px;
-            background: rgba(255,59,48,.1);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px;
-            font-size: 22px;
-        }
-        .feature-card h3 {
-            color: var(--white);
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .feature-card p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* ── How It Works ── */
-        #how-it-works { background: var(--card); }
-        .steps {
-            max-width: 720px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-        .step {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-            position: relative;
-            padding-bottom: 40px;
-        }
-        .step:last-child { padding-bottom: 0; }
-        .step-num {
-            flex-shrink: 0;
-            width: 44px; height: 44px;
-            background: rgba(255,59,48,.12);
-            border: 1px solid rgba(255,59,48,.25);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--red);
-            font-weight: 700;
-            font-size: 16px;
-            position: relative;
-            z-index: 1;
-        }
-        .step:not(:last-child) .step-num::after {
-            content: '';
-            position: absolute;
-            top: 44px;
-            left: 50%;
-            width: 1px;
-            height: calc(100% + 40px - 44px);
-            background: var(--border);
-            transform: translateX(-50%);
-        }
-        .step-content h3 {
-            color: var(--white);
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-        .step-content p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* ── Stats ── */
-        #stats {
-            background: var(--bg);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 60px 24px;
-        }
-        .stats-grid {
-            max-width: 800px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            text-align: center;
-        }
-        .stat-item h3 {
-            color: var(--red);
-            font-size: clamp(28px, 4vw, 40px);
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
-        .stat-item p {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        /* ── Quiz Section ── */
-        #quiz { background: var(--bg); }
-        .quiz-preview {
-            max-width: 560px;
-            margin: 0 auto;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 36px 32px;
-        }
-        .quiz-question {
-            color: var(--white);
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            text-align: center;
-        }
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .quiz-option {
-            background: rgba(255,255,255,.04);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 14px 18px;
-            color: var(--text);
-            font-size: 15px;
-            cursor: default;
-            transition: border-color .2s;
-        }
-        .quiz-option.correct {
-            border-color: var(--green);
-            background: rgba(64,204,102,.08);
-            color: var(--green);
-        }
-
-        /* ── Privacy Banner ── */
-        #privacy {
-            background: var(--card);
-        }
-        .privacy-grid {
-            max-width: 800px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
-        }
-        .privacy-item {
-            text-align: center;
-            padding: 24px 16px;
-        }
-        .privacy-item .icon {
-            font-size: 32px;
-            margin-bottom: 14px;
-        }
-        .privacy-item h3 {
-            color: var(--white);
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-        .privacy-item p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* ── CTA ── */
-        #cta {
-            background: var(--bg);
-            text-align: center;
-            padding: 100px 24px;
-        }
-        #cta h2 {
-            color: var(--white);
-            font-size: clamp(26px, 4vw, 36px);
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-        #cta p {
-            color: var(--text-secondary);
-            font-size: 16px;
-            margin-bottom: 32px;
-            max-width: 460px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ── Footer ── */
-        .footer {
-            background: var(--card);
-            border-top: 1px solid var(--border);
-            padding: 40px 24px;
-        }
-        .footer-inner {
-            max-width: 1080px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
-        .footer-brand .maple { color: var(--red); }
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 13px;
-            transition: color .2s;
-        }
-        .footer-links a:hover { color: var(--white); }
-
-        /* ── Maple leaf SVG ── */
-        .maple-svg { fill: var(--red); }
-
-        /* ── Responsive ── */
-        @media (max-width: 640px) {
-            .nav-links { display: none; }
-            .features-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; gap: 32px; }
-            .hero { padding: 100px 20px 60px; }
-            section { padding: 64px 20px; }
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Maple Tracker helps Canadian permanent residents track physical presence, record trips, and prepare for citizenship on iPhone.">
+  <title>Maple Tracker — Know where you stand</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Maple Tracker home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 42"><path d="M20 1.5l3.3 7.1 5.6-3-1.4 8 7.5-1.2-4.7 6.2 5.5 3-8.2 3.7 1.5 6.2-7.1-1.3.5 10.3h-5L18 30.2l-7.1 1.3 1.5-6.2-8.2-3.7 5.5-3L5 12.4l7.5 1.2-1.4-8 5.6 3L20 1.5z"/></svg></span><span>Maple Tracker</span></a>
+      <div class="nav-links"><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="#faq">FAQ</a></div>
+      <a class="nav-cta" href="https://apps.apple.com/ca/app/maple-countdown/id6758927692" aria-label="Download Maple Tracker on the App Store">Get the app</a>
+    </nav>
+  </header>
 
-<!-- Nav -->
-<nav>
-    <div class="nav-inner">
-        <a href="#" class="nav-brand">
-            <span class="maple">🍁</span> Maple Tracker
-        </a>
-        <ul class="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#quiz">Quiz</a></li>
-            <li><a href="#privacy">Privacy</a></li>
-        </ul>
-    </div>
-</nav>
+  <main id="main">
+    <section class="hero shell">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span></span> Built for life in Canada</p>
+        <h1>Know exactly<br><em>where you stand.</em></h1>
+        <p class="hero-lead">Track your physical presence, keep every trip organized, and see your path to Canadian citizenship in one calm, private place.</p>
+        <div class="hero-actions">
+          <a class="app-store-button" href="https://apps.apple.com/ca/app/maple-countdown/id6758927692"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.7 19.5c-.8 1.2-1.7 2.5-3 2.5-1.4 0-1.8-.8-3.3-.8s-2 .8-3.3.8c-1.3.1-2.3-1.3-3.1-2.5C4.3 17 3 12.5 4.7 9.4c.9-1.5 2.4-2.5 4.1-2.5 1.3 0 2.5.9 3.3.9.8 0 2.3-1.1 3.8-.9.7 0 2.5.3 3.6 2-.1.1-2.1 1.3-2.1 3.8 0 3 2.7 4 2.7 4s-.4 1.8-1.4 2.8zM15.9 2c.1 1.2-.3 2.4-1 3.2-.7.9-1.8 1.5-3 1.4-.1-1.1.4-2.3 1-3.1.8-.8 2-1.4 3-1.5z"/></svg><span><small>Download on the</small>App Store</span></a>
+          <a class="text-link" href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="availability">For iPhone · Requires iOS 18.6 or later · No account required</p>
+      </div>
 
-<!-- Hero -->
-<section class="hero">
-    <div class="hero-bg">
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
-    </div>
-    <div class="hero-content">
-        <div class="hero-icon">
-            <svg viewBox="-1953 -2031 3906 4061" class="maple-svg">
-                <path d="M-90 2030 L-45 1167 L-156 1069 L-1015 1220 L-899 900 L-919 827 L-1860 65 L-1648 -34 L-1614 -113 L-1800 -685 L-1258 -570 L-1185 -608 L-1080 -855 L-657 -401 L-546 -458 L-750 -1510 L-423 -1321 L-332 -1348 L0 -2000 L332 -1348 L423 -1321 L750 -1510 L546 -458 L657 -401 L1080 -855 L1185 -608 L1258 -570 L1800 -685 L1614 -113 L1648 -34 L1860 65 L919 827 L899 900 L1015 1220 L156 1069 L45 1167 L90 2030 Z"/>
-            </svg>
-        </div>
-        <div class="hero-badge">iOS App for Permanent Residents</div>
-        <h1>Track Your Path to <span>Canadian Citizenship</span></h1>
-        <p>Maple Tracker helps you count your days of physical presence in Canada, log your trips, and know exactly when you'll be eligible for citizenship.</p>
-        <a href="https://apps.apple.com/ca/app/maple-countdown/id6758927692" class="hero-cta">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            Download on the App Store
-        </a>
-        <p class="hero-sub">Free · Requires iOS 16+</p>
-    </div>
-</section>
+      <div class="hero-product reveal" role="img" aria-label="Maple Tracker dashboard preview">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="phone"><div class="phone-screen">
+          <div class="status-row"><span>9:41</span><span>●●●</span></div>
+          <div class="app-topbar"><span class="profile-dot"></span><strong>Dashboard</strong><span class="add-button">+</span></div>
+          <div class="progress-visual"><div class="progress-ring"><div><strong>764</strong><span>days present</span></div></div><strong class="status-title">Not Yet Eligible</strong><span class="status-caption"><i></i>331 days remaining</span></div>
+          <div class="metric-card"><div class="metric-head"><span>Days in Canada</span><span>⌖</span></div><div><strong class="green">764</strong><small> days total</small></div><div class="metric-bar"><span></span></div><div class="metric-foot"><span>Since permanent residence</span><span>764 / 1,095</span></div></div>
+          <div class="metric-card red-card"><div class="metric-head"><span>Days outside Canada</span><span>⌁</span></div><div><strong>67</strong><small> days total</small></div><div class="metric-bar"><span></span></div><div class="metric-foot"><span>Last 5 years</span><span>67 / 1,095</span></div></div>
+          <div class="tabbar"><b>⌂<small>Dashboard</small></b><span>◉<small>Quiz</small></span><span>▤<small>Reports</small></span><span>⚙<small>Settings</small></span></div>
+        </div></div>
+        <div class="floating-card eligibility-card"><span>Estimated eligibility</span><strong>June 12, 2027</strong></div>
+        <div class="floating-card trip-card"><span class="flag">🇫🇷</span><div><strong>France</strong><span>15 days away</span></div></div>
+      </div>
+    </section>
 
-<!-- Features -->
-<section id="features">
-    <div class="section-header">
-        <div class="section-label">Features</div>
-        <h2>Everything You Need to Track Your Eligibility</h2>
-        <p>Designed specifically for Canadian permanent residents navigating the citizenship process.</p>
-    </div>
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <h3>Real-Time Dashboard</h3>
-            <p>See your progress toward 1,095 days at a glance with a visual progress ring, estimated eligibility date, and daily updates.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">✈️</div>
-            <h3>Trip Logging</h3>
-            <p>Record every trip outside Canada with departure & return dates, destination country, and optional notes. Days away are automatically deducted.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📍</div>
-            <h3>Automatic Detection</h3>
-            <p>Enable location services and Maple Tracker detects when you leave or return to Canada — creating trip records automatically.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">☁️</div>
-            <h3>iCloud Sync</h3>
-            <p>Your data syncs seamlessly across all your Apple devices via iCloud. Switch between iPhone and iPad without losing anything.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🍁</div>
-            <h3>Citizenship Quiz</h3>
-            <p>Prepare for the citizenship test with 60+ questions covering Canadian history, politics, geography, rights, and symbols.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🔔</div>
-            <h3>Smart Notifications</h3>
-            <p>Receive daily or weekly reminders with your current day count and milestones. Stay motivated on your journey to citizenship.</p>
-        </div>
-    </div>
-</section>
+    <section class="trust-strip" aria-label="Product highlights"><div class="shell trust-grid reveal">
+      <div><strong>1,095</strong><span>day goal, clearly tracked</span></div><div><strong>On device</strong><span>location processing</span></div><div><strong>Optional</strong><span>private iCloud sync</span></div><div><strong>One tap</strong><span>PDF eligibility reports</span></div>
+    </div></section>
 
-<!-- How It Works -->
-<section id="how-it-works">
-    <div class="section-header">
-        <div class="section-label">How It Works</div>
-        <h2>Three Simple Steps</h2>
-        <p>Get started in minutes and let Maple Tracker do the counting.</p>
-    </div>
-    <div class="steps">
-        <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-content">
-                <h3>Set Up Your Profile</h3>
-                <p>Enter your permanent residence date and your first arrival in Canada. If you had time as a temporary resident, Maple Tracker credits those days at 50% (up to 365 days).</p>
-            </div>
-        </div>
-        <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-content">
-                <h3>Log Your Trips</h3>
-                <p>Add any trips you've taken outside of Canada — manually or let automatic location tracking handle it for you. Every day away is tracked and deducted.</p>
-            </div>
-        </div>
-        <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-content">
-                <h3>Track Your Progress</h3>
-                <p>Watch your dashboard update in real time. You'll see your total days present, days remaining, and the exact date you'll become eligible to apply.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    <section class="section shell" id="features">
+      <div class="section-heading reveal"><p class="eyebrow"><span></span> The whole picture</p><h2>Less counting.<br><em>More confidence.</em></h2><p>Maple Tracker turns dates, trips, and residency rules into a dashboard you can understand at a glance.</p></div>
+      <div class="bento-grid">
+        <article class="feature-card feature-wide reveal"><div class="feature-copy"><span class="feature-number">01</span><h3>Your path, calculated daily.</h3><p>See days present, days away, remaining time, and your estimated eligibility date without rebuilding a spreadsheet.</p></div><div class="mini-dashboard" aria-hidden="true"><div class="mini-ring"><span><strong>70%</strong>complete</span></div><div class="mini-stack"><div><small>Days present</small><strong>764</strong></div><div><small>Days remaining</small><strong>331</strong></div></div></div></article>
+        <article class="feature-card reveal"><span class="feature-number">02</span><div class="feature-symbol" aria-hidden="true">✈</div><h3>Trips that stay organized.</h3><p>Add trips in seconds or enable automatic detection. Edit, review, and select multiple records when cleanup is needed.</p></article>
+        <article class="feature-card feature-quiz reveal"><span class="feature-number">03</span><div class="quiz-sample" aria-hidden="true"><span>History</span><strong>When did Canada become a country?</strong><i>1867 <b>✓</b></i></div><h3>Study when you have a minute.</h3><p>Practice citizenship questions by category with immediate feedback and clear explanations.</p></article>
+        <article class="feature-card feature-wide report-card reveal"><div class="feature-copy"><span class="feature-number">04</span><h3>A record you can take with you.</h3><p>Generate a bilingual PDF summary of your trips and eligibility calculation for your own records. Always verify official requirements with IRCC.</p></div><div class="report-sheet" aria-hidden="true"><div class="report-brand"><span>🍁</span><strong>Physical Presence Report</strong></div><div class="report-line wide"></div><div class="report-line"></div><div class="report-row"><span></span><span></span><span></span></div><div class="report-row"><span></span><span></span><span></span></div><div class="report-total">764 days present</div></div></article>
+      </div>
+    </section>
 
-<!-- Stats -->
-<section id="stats">
-    <div class="stats-grid">
-        <div class="stat-item">
-            <h3>1,095</h3>
-            <p>Days of physical presence required</p>
-        </div>
-        <div class="stat-item">
-            <h3>5 yrs</h3>
-            <p>Rolling window for eligibility</p>
-        </div>
-        <div class="stat-item">
-            <h3>60+</h3>
-            <p>Citizenship quiz questions</p>
-        </div>
-    </div>
-</section>
+    <section class="section journey-section" id="how-it-works"><div class="shell journey-grid">
+      <div class="section-heading journey-heading reveal"><p class="eyebrow"><span></span> Simple by design</p><h2>From arrival<br><em>to application.</em></h2><p>Start with what you know. Maple Tracker keeps the rest visible as life moves forward.</p></div>
+      <ol class="steps-list"><li class="reveal"><span>01</span><div><h3>Set your residency timeline</h3><p>Add your arrival and permanent residence dates, including eligible pre-PR time.</p></div></li><li class="reveal"><span>02</span><div><h3>Keep your trips current</h3><p>Record travel manually or let optional location-based detection help identify departures and returns.</p></div></li><li class="reveal"><span>03</span><div><h3>Check your progress</h3><p>Follow the live estimate, prepare a report, and confirm the final result with official IRCC tools.</p></div></li></ol>
+    </div></section>
 
-<!-- Quiz Preview -->
-<section id="quiz">
-    <div class="section-header">
-        <div class="section-label">Citizenship Quiz</div>
-        <h2>Are You Ready for the Test?</h2>
-        <p>Practice with real questions from the "Discover Canada" study guide, organized by category and province.</p>
-    </div>
-    <div class="quiz-preview">
-        <div class="quiz-question">What is the capital city of Canada?</div>
-        <div class="quiz-options">
-            <div class="quiz-option">Toronto</div>
-            <div class="quiz-option correct">✓ Ottawa</div>
-            <div class="quiz-option">Vancouver</div>
-            <div class="quiz-option">Montréal</div>
-        </div>
-    </div>
-</section>
+    <section class="section shell privacy-section" id="privacy"><div class="privacy-panel reveal">
+      <div class="privacy-copy"><p class="eyebrow light"><span></span> Privacy by default</p><h2>Your travel story<br><em>belongs to you.</em></h2><p>Trip and residency data stays on your device unless you choose iCloud sync. Location is processed on device, usage analytics is off by default, and no account is required.</p><a class="text-link light-link" href="privacy-policy.html">Read the privacy policy <span aria-hidden="true">→</span></a></div>
+      <div class="privacy-orbit" aria-hidden="true"><div class="shield"><svg viewBox="0 0 48 56"><path d="M24 2l19 7v16c0 13-7.8 23.8-19 29C12.8 48.8 5 38 5 25V9l19-7z"/><path d="M17 27l5 5 10-12"/></svg></div><span class="privacy-chip chip-one">No account</span><span class="privacy-chip chip-two">On-device</span><span class="privacy-chip chip-three">Your iCloud</span></div>
+    </div></section>
 
-<!-- Privacy -->
-<section id="privacy">
-    <div class="section-header">
-        <div class="section-label">Privacy First</div>
-        <h2>Your Data Stays Yours</h2>
-        <p>Maple Tracker is built with privacy at its core. We never see your personal information.</p>
-    </div>
-    <div class="privacy-grid">
-        <div class="privacy-item">
-            <div class="icon">🔒</div>
-            <h3>On-Device Storage</h3>
-            <p>All trip and residency data is stored locally on your device — never on our servers.</p>
-        </div>
-        <div class="privacy-item">
-            <div class="icon">📍</div>
-            <h3>Local Processing</h3>
-            <p>Location data is processed entirely on-device. We never receive your GPS coordinates.</p>
-        </div>
-        <div class="privacy-item">
-            <div class="icon">👤</div>
-            <h3>No Account Required</h3>
-            <p>No sign-up, no email, no identity. Just download and start tracking.</p>
-        </div>
-        <div class="privacy-item">
-            <div class="icon">🍎</div>
-            <h3>Apple iCloud</h3>
-            <p>Optional sync uses Apple's encrypted iCloud infrastructure — not third-party clouds.</p>
-        </div>
-    </div>
-</section>
+    <section class="section shell faq-section" id="faq">
+      <div class="section-heading reveal"><p class="eyebrow"><span></span> Good to know</p><h2>Questions,<br><em>answered clearly.</em></h2></div>
+      <div class="faq-list">
+        <details class="reveal"><summary>Is Maple Tracker an official IRCC app?<span>+</span></summary><p>No. Maple Tracker is an independent personal tracking tool and is not affiliated with the Government of Canada. Always verify eligibility and dates with IRCC before applying.</p></details>
+        <details class="reveal"><summary>Does automatic trip detection send my location to a server?<span>+</span></summary><p>No. Country detection is performed on your iPhone. Location samples remain local unless you separately enable both iCloud Sync and Location History Sync.</p></details>
+        <details class="reveal"><summary>Do I need to create an account?<span>+</span></summary><p>No. You can begin tracking without providing a name, email address, or immigration documents.</p></details>
+        <details class="reveal"><summary>Can I export my information?<span>+</span></summary><p>Yes. Maple Tracker can generate a bilingual PDF summary of your residency timeline, trips, and current eligibility calculation.</p></details>
+      </div>
+    </section>
 
-<!-- CTA -->
-<section id="cta">
-    <h2>Start Your Journey Today</h2>
-    <p>Join permanent residents across Canada who are tracking their path to citizenship with Maple Tracker.</p>
-    <a href="https://apps.apple.com/ca/app/maple-countdown/id6758927692" class="hero-cta">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download on the App Store
-    </a>
-</section>
+    <section class="final-cta"><div class="shell final-cta-inner reveal"><span class="cta-leaf" aria-hidden="true">🍁</span><h2>Make every day<br><em>count.</em></h2><p>A clearer view of your path to Canadian citizenship, right on your iPhone.</p><a class="app-store-button light-button" href="https://apps.apple.com/ca/app/maple-countdown/id6758927692"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.7 19.5c-.8 1.2-1.7 2.5-3 2.5-1.4 0-1.8-.8-3.3-.8s-2 .8-3.3.8c-1.3.1-2.3-1.3-3.1-2.5C4.3 17 3 12.5 4.7 9.4c.9-1.5 2.4-2.5 4.1-2.5 1.3 0 2.5.9 3.3.9.8 0 2.3-1.1 3.8-.9.7 0 2.5.3 3.6 2-.1.1-2.1 1.3-2.1 3.8 0 3 2.7 4 2.7 4s-.4 1.8-1.4 2.8zM15.9 2c.1 1.2-.3 2.4-1 3.2-.7.9-1.8 1.5-3 1.4-.1-1.1.4-2.3 1-3.1.8-.8 2-1.4 3-1.5z"/></svg><span><small>Download on the</small>App Store</span></a></div></section>
+  </main>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-brand">
-            <span class="maple">🍁</span> © 2025 Axel Tringa. All rights reserved.
-        </div>
-        <ul class="footer-links">
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="terms-of-service.html">Terms of Service</a></li>
-            <li><a href="mailto:me@axeltringa.ca">Contact</a></li>
-        </ul>
-    </div>
-</footer>
+  <footer class="site-footer"><div class="shell footer-grid"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 42"><path d="M20 1.5l3.3 7.1 5.6-3-1.4 8 7.5-1.2-4.7 6.2 5.5 3-8.2 3.7 1.5 6.2-7.1-1.3.5 10.3h-5L18 30.2l-7.1 1.3 1.5-6.2-8.2-3.7 5.5-3L5 12.4l7.5 1.2-1.4-8 5.6 3L20 1.5z"/></svg></span><span>Maple Tracker</span></a><p>Independent citizenship presence tracking for iPhone.</p><div class="footer-links"><a href="privacy-policy.html">Privacy</a><a href="terms-of-service.html">Terms</a><a href="mailto:axel@mapletracker.ca">Contact</a></div></div><div class="shell footer-bottom"><span>© 2026 Axel Tringa</span><span>Made in Canada</span></div></footer>
 
+  <script>
+    document.documentElement.classList.add('js');
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+  </script>
 </body>
 </html>
