@@ -1,34 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0a0a0a">
   <title>Terms of Service — Maple Tracker</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    (() => {
+      const requested = new URLSearchParams(window.location.search).get("lang");
+      let saved = null;
+      try { saved = localStorage.getItem("maple-tracker-language"); } catch (_) {}
+      const preferred = requested || saved || navigator.languages?.[0] || navigator.language || "en";
+      const language = preferred.toLowerCase().startsWith("fr") ? "fr" : "en";
+      document.documentElement.lang = language;
+      document.documentElement.dataset.lang = language;
+    })();
+  </script>
+  <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="legal-page">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header"><nav class="nav shell" aria-label="Primary navigation">
-    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 42"><path d="M20 1.5l3.3 7.1 5.6-3-1.4 8 7.5-1.2-4.7 6.2 5.5 3-8.2 3.7 1.5 6.2-7.1-1.3.5 10.3h-5L18 30.2l-7.1 1.3 1.5-6.2-8.2-3.7 5.5-3L5 12.4l7.5 1.2-1.4-8 5.6 3L20 1.5z"/></svg></span><span>Maple Tracker</span></a>
-    <div class="nav-links"><a href="index.html#features">Features</a><a href="index.html#privacy">Privacy</a><a href="index.html#faq">FAQ</a></div>
-    <a class="nav-cta" href="https://apps.apple.com/ca/app/maple-countdown/id6758927692">Get the app</a>
+<body class="legal-page" data-page="terms">
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <header class="site-header"><nav class="nav shell" aria-label="Primary navigation" data-i18n-aria-label="nav.label">
+    <a class="brand" href="index.html" aria-label="Maple Tracker home" data-i18n-aria-label="nav.home"><span class="brand-mark" aria-hidden="true"><img src="app-icon.png" alt=""></span><span>Maple Tracker</span></a>
+    <div class="nav-links"><a href="index.html#features" data-i18n="nav.features">Features</a><a href="index.html#privacy" data-i18n="nav.privacy">Privacy</a><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></div>
+    <div class="nav-actions"><div class="language-switcher" role="group" aria-label="Language" data-i18n-aria-label="language.label"><button type="button" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="fr" aria-pressed="false">FR</button></div><a class="nav-cta" href="https://apps.apple.com/ca/app/maple-countdown/id6758927692" data-i18n="nav.cta" data-i18n-aria-label="nav.ctaLabel">Get the app</a></div>
   </nav></header>
   <main id="main">
-    <section class="legal-hero"><div class="shell"><p class="eyebrow"><span></span> Maple Tracker</p><h1>Terms of<br><em>Service.</em></h1><span class="updated">Last updated: August 18, 2026</span></div></section>
+    <section class="legal-hero"><div class="shell"><p class="eyebrow"><span></span> Maple Tracker</p><h1 data-i18n-html="legal.title">Terms of<br><em>Service.</em></h1><span class="updated" data-i18n="legal.updated">Last updated: August 18, 2026</span></div></section>
     <div class="legal-content">
-      <section class="section"><h2>1. Acceptance of Terms</h2><p>By downloading, installing, or using Maple Tracker (the "App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p></section>
-      <section class="section"><h2>2. Description of Service</h2><p>Maple Tracker is a personal tool designed to help users track their physical presence in Canada for the purpose of monitoring eligibility for Canadian citizenship. The App provides day counting, trip logging, residency tracking, citizenship quiz, and PDF report generation features. The App supports multiple languages and offers both Light and Dark display modes.</p></section>
-      <section class="section"><h2>3. Disclaimer</h2><p>Maple Tracker is NOT an official tool of Immigration, Refugees and Citizenship Canada (IRCC) or any government agency. The calculations and information provided by the App are for personal reference only and should not be considered legal advice. Always verify your eligibility with IRCC or a qualified immigration professional before applying for citizenship.</p></section>
-      <section class="section"><h2>4. User Data</h2><p>Trip and residency data is stored locally on your device. You can optionally synchronize this data through your personal iCloud account. Location samples are included only when Location History Sync is separately enabled. You are responsible for the accuracy of the information you enter and for maintaining any backups you require.</p></section>
-      <section class="section"><h2>5. Location Services</h2><p>The App may request location access to detect trips automatically. Country detection is performed on your device. Location samples remain local unless you enable Location History Sync, in which case they are synchronized through your private iCloud account. You can disable automatic tracking in Maple Tracker Settings or revoke location permission in iOS Settings.</p></section>
-      <section class="section"><h2>6. Intellectual Property</h2><p>All content, design, and code in Maple Tracker are the property of Axel Tringa. The maple leaf design elements are inspired by the Canadian flag and are used in a non-commercial, informational context.</p></section>
-      <section class="section"><h2>7. Limitation of Liability</h2><p>Maple Tracker is provided "as is" without warranties of any kind. Axel Tringa shall not be held liable for any damages, losses, or consequences arising from the use of the App, including but not limited to incorrect day calculations, missed deadlines, or rejected citizenship applications.</p></section>
-      <section class="section"><h2>8. Modifications</h2><p>We reserve the right to modify these Terms at any time. Continued use of the App after changes constitutes acceptance of the updated Terms.</p></section>
-      <section class="section"><h2>9. Contact</h2><p>For questions about these Terms, contact us at <a href="mailto:axel@mapletracker.ca">axel@mapletracker.ca</a>.</p></section>
+      <section class="section"><h2 data-i18n="terms.1.title">1. Acceptance of Terms</h2><p data-i18n="terms.1.body">By downloading, installing, or using Maple Tracker (the "App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p></section>
+      <section class="section"><h2 data-i18n="terms.2.title">2. Description of Service</h2><p data-i18n="terms.2.body">Maple Tracker is a personal tool designed to help users track their physical presence in Canada for the purpose of monitoring eligibility for Canadian citizenship. The App provides day counting, trip logging, residency tracking, citizenship quiz, and PDF report generation features. The App supports multiple languages and offers both Light and Dark display modes.</p></section>
+      <section class="section"><h2 data-i18n="terms.3.title">3. Disclaimer</h2><p data-i18n="terms.3.body">Maple Tracker is NOT an official tool of Immigration, Refugees and Citizenship Canada (IRCC) or any government agency. The calculations and information provided by the App are for personal reference only and should not be considered legal advice. Always verify your eligibility with IRCC or a qualified immigration professional before applying for citizenship.</p></section>
+      <section class="section"><h2 data-i18n="terms.4.title">4. User Data</h2><p data-i18n="terms.4.body">Trip and residency data is stored locally on your device. You can optionally synchronize this data through your personal iCloud account. Location samples are included only when Location History Sync is separately enabled. You are responsible for the accuracy of the information you enter and for maintaining any backups you require.</p></section>
+      <section class="section"><h2 data-i18n="terms.5.title">5. Location Services</h2><p data-i18n="terms.5.body">The App may request location access to detect trips automatically. Country detection is performed on your device. Location samples remain local unless you enable Location History Sync, in which case they are synchronized through your private iCloud account. You can disable automatic tracking in Maple Tracker Settings or revoke location permission in iOS Settings.</p></section>
+      <section class="section"><h2 data-i18n="terms.6.title">6. Intellectual Property</h2><p data-i18n="terms.6.body">All content, design, and code in Maple Tracker are the property of Axel Tringa. The maple leaf design elements are inspired by the Canadian flag and are used in a non-commercial, informational context.</p></section>
+      <section class="section"><h2 data-i18n="terms.7.title">7. Limitation of Liability</h2><p data-i18n="terms.7.body">Maple Tracker is provided "as is" without warranties of any kind. Axel Tringa shall not be held liable for any damages, losses, or consequences arising from the use of the App, including but not limited to incorrect day calculations, missed deadlines, or rejected citizenship applications.</p></section>
+      <section class="section"><h2 data-i18n="terms.8.title">8. Modifications</h2><p data-i18n="terms.8.body">We reserve the right to modify these Terms at any time. Continued use of the App after changes constitutes acceptance of the updated Terms.</p></section>
+      <section class="section"><h2 data-i18n="terms.9.title">9. Contact</h2><p data-i18n-html="terms.9.body">For questions about these Terms, contact us at <a href="mailto:axel@mapletracker.ca">axel@mapletracker.ca</a>.</p></section>
     </div>
   </main>
-  <footer class="site-footer"><div class="shell footer-grid"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 42"><path d="M20 1.5l3.3 7.1 5.6-3-1.4 8 7.5-1.2-4.7 6.2 5.5 3-8.2 3.7 1.5 6.2-7.1-1.3.5 10.3h-5L18 30.2l-7.1 1.3 1.5-6.2-8.2-3.7 5.5-3L5 12.4l7.5 1.2-1.4-8 5.6 3L20 1.5z"/></svg></span><span>Maple Tracker</span></a><p>Independent citizenship presence tracking for iPhone.</p><div class="footer-links"><a href="privacy-policy.html">Privacy</a><a href="terms-of-service.html">Terms</a><a href="mailto:axel@mapletracker.ca">Contact</a></div></div><div class="shell footer-bottom"><span>© 2026 Axel Tringa</span><span>Made in Canada</span></div></footer>
+  <footer class="site-footer"><div class="shell footer-grid"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><img src="app-icon.png" alt=""></span><span>Maple Tracker</span></a><p data-i18n="footer.tagline">Independent citizenship presence tracking for iPhone.</p><div class="footer-links"><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy</a><a href="terms-of-service.html" data-i18n="footer.terms">Terms</a><a href="mailto:axel@mapletracker.ca" data-i18n="footer.contact">Contact</a></div></div><div class="shell footer-bottom"><span>© 2026 Axel Tringa</span><span data-i18n="footer.made">Made in Canada</span></div></footer>
+  <script src="i18n.js"></script>
 </body>
 </html>
