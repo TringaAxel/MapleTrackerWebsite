@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Maple Tracker</title>
   <meta name="description" content="Maple Tracker counts your days of physical presence in Canada, keeps your travel history in order and helps you prepare for the citizenship test. For iPhone and Android.">
-  <meta name="theme-color" content="#f5f5f3" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0d0d0e" media="(prefers-color-scheme: dark)">
-  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#09090b">
+  <meta name="color-scheme" content="dark">
   <meta name="apple-itunes-app" content="app-id=6758927692">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Maple Tracker">
@@ -19,6 +18,7 @@
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/instrument-serif-latin-italic.woff2" as="font" type="font/woff2" crossorigin>
   <script>
     (() => {
       const requested = new URLSearchParams(window.location.search).get("lang");
@@ -36,52 +36,70 @@
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
   <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="index.html" aria-label="Maple Tracker home" data-i18n-aria-label="nav.home"><img src="app-icon-128.png" width="32" height="32" alt=""><span>Maple Tracker</span></a>
-      <nav class="nav-links" aria-label="Primary navigation" data-i18n-aria-label="nav.label">
-        <a href="#how" data-i18n="nav.how">How it works</a>
-        <a href="#features" data-i18n="nav.features">Features</a>
-        <a href="#privacy" data-i18n="nav.privacy">Privacy</a>
-        <a href="#faq" data-i18n="nav.faq">FAQ</a>
-      </nav>
-      <div class="header-actions">
-        <div class="lang" role="group" aria-label="Language" data-i18n-aria-label="language.label">
-          <button type="button" id="lang-en" data-language="en" aria-pressed="true">EN</button>
-          <button type="button" id="lang-fr" data-language="fr" aria-pressed="false">FR</button>
+    <div class="shell">
+      <div class="nav">
+        <a class="brand" href="index.html" aria-label="Maple Tracker home" data-i18n-aria-label="nav.home"><img src="app-icon-128.png" width="34" height="34" alt=""><span>Maple Tracker</span></a>
+        <nav class="nav-links" aria-label="Primary navigation" data-i18n-aria-label="nav.label">
+          <a href="#features" data-i18n="nav.features">Features</a>
+          <a href="#how" data-i18n="nav.how">How it works</a>
+          <a href="#privacy" data-i18n="nav.privacy">Privacy</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        </nav>
+        <div class="nav-actions">
+          <div class="lang" role="group" aria-label="Language" data-i18n-aria-label="language.label">
+            <button type="button" id="lang-en" data-language="en" aria-pressed="true">EN</button>
+            <button type="button" id="lang-fr" data-language="fr" aria-pressed="false">FR</button>
+          </div>
+          <a class="nav-cta" href="#download" data-store-link data-i18n="nav.cta">Get the app</a>
         </div>
-        <a class="btn" href="#download" data-store-link data-i18n="nav.cta">Get the app</a>
       </div>
     </div>
   </header>
 
   <main id="main">
     <section class="hero">
-      <div class="wrap hero-grid">
+      <div class="shell hero-grid">
         <div class="hero-copy">
           <a class="announce" href="https://play.google.com/store/apps/details?id=com.axeltringa.mapletracker">
             <span class="announce-tag" data-i18n="hero.new">New</span>
             <span data-i18n="hero.announce">Now available on Android</span>
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg>
           </a>
-          <h1 data-i18n="hero.title">Know where you stand on the way to Canadian citizenship.</h1>
-          <p class="lead" data-i18n="hero.lead">Maple Tracker counts your days of physical presence in Canada, keeps your travel history in order and helps you prepare for the citizenship test.</p>
+          <h1 data-i18n-html="hero.title">Know exactly<br><em>where you stand.</em></h1>
+          <p class="hero-lead" data-i18n="hero.lead">Track your physical presence, keep every trip organized, and see your path to Canadian citizenship in one calm, private place.</p>
           <div class="store-row">
             <a class="store" href="https://apps.apple.com/ca/app/maple-tracker/id6758927692" aria-label="Download Maple Tracker on the App Store" data-i18n-aria-label="store.appleLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.7 19.5c-.8 1.2-1.7 2.5-3 2.5-1.4 0-1.8-.8-3.3-.8s-2 .8-3.3.8c-1.3.1-2.3-1.3-3.1-2.5C4.3 17 3 12.5 4.7 9.4c.9-1.5 2.4-2.5 4.1-2.5 1.3 0 2.5.9 3.3.9.8 0 2.3-1.1 3.8-.9.7 0 2.5.3 3.6 2-.1.1-2.1 1.3-2.1 3.8 0 3 2.7 4 2.7 4s-.4 1.8-1.4 2.8zM15.9 2c.1 1.2-.3 2.4-1 3.2-.7.9-1.8 1.5-3 1.4-.1-1.1.4-2.3 1-3.1.8-.8 2-1.4 3-1.5z"/></svg><span><small data-i18n="store.appleSmall">Download on the</small>App Store</span></a>
             <a class="store" href="https://play.google.com/store/apps/details?id=com.axeltringa.mapletracker" aria-label="Get Maple Tracker on Google Play" data-i18n-aria-label="store.googleLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.9v18.2L12.5 12z"/><path d="M4.9 2.2l8.5 8.9 2.5-2.6z"/><path d="M4.9 21.8l8.5-8.9 2.5 2.6z"/><path d="M16.9 9.1l3.9 2.2c.6.4.6 1 0 1.4l-3.9 2.2-2.7-2.9z"/></svg><span><small data-i18n="store.googleSmall">Get it on</small>Google Play</span></a>
           </div>
           <p class="fine" data-i18n="hero.fine">No account required · iOS 18.6 or later · Android 9 or later</p>
         </div>
-        <div class="hero-visual">
-          <div class="device">
-            <img class="shot-en" src="app-dashboard-en.png" width="644" height="1400" alt="Maple Tracker dashboard showing 1,498 days present in Canada and an Eligible status">
-            <img class="shot-fr" src="app-dashboard-fr.png" width="644" height="1400" alt="Tableau de bord de Maple Tracker indiquant 1 498 jours de présence au Canada et le statut Admissible">
+
+        <div class="stage">
+          <div class="rings" aria-hidden="true"></div>
+          <div class="phone">
+            <div class="phone-screen">
+              <img class="shot-en" src="app-dashboard-en.png" width="644" height="1400" alt="Maple Tracker dashboard showing 1,498 days present in Canada and an Eligible status">
+              <img class="shot-fr" src="app-dashboard-fr.png" width="644" height="1400" alt="Tableau de bord de Maple Tracker indiquant 1 498 jours de présence au Canada et le statut Éligible">
+            </div>
+          </div>
+          <div class="float float-status" aria-hidden="true">
+            <span class="dot-ok"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span>
+            <div><span data-i18n="hero.statusLabel">Citizenship status</span><strong data-i18n="hero.status">Eligibility reached</strong></div>
+          </div>
+          <div class="float float-trip" aria-hidden="true">
+            <i class="flag flag-fr"></i>
+            <div><strong>France</strong><span data-i18n="hero.tripSub">25 days away</span></div>
+          </div>
+          <div class="float float-quiz" aria-hidden="true">
+            <span class="score"><svg viewBox="0 0 16 16"><path d="M8 2.2l1.7 3.6 3.9.5-2.9 2.7.8 3.9L8 11l-3.5 1.9.8-3.9L2.4 6.3l3.9-.5z"/></svg></span>
+            <div><span data-i18n="hero.quizLabel">Citizenship quiz</span><strong>18 / 20</strong></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="facts" aria-label="At a glance" data-i18n-aria-label="facts.label">
-      <dl class="wrap facts-grid">
+    <section class="paper" aria-label="At a glance" data-i18n-aria-label="facts.label">
+      <dl class="shell facts-grid">
         <div><dt data-i18n="facts.oneTitle">1,095 days</dt><dd data-i18n="facts.oneBody">The presence goal, recalculated every day</dd></div>
         <div><dt data-i18n="facts.twoTitle">170 questions</dt><dd data-i18n="facts.twoBody">To practise for the citizenship test</dd></div>
         <div><dt data-i18n="facts.threeTitle">14 languages</dt><dd data-i18n="facts.threeBody">Including English and French</dd></div>
@@ -89,166 +107,190 @@
       </dl>
     </section>
 
-    <section class="section band" id="how">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 data-i18n="how.title">How the count works</h2>
-          <p class="lead" data-i18n="how.lead">To apply for citizenship, you need 1,095 days of physical presence in Canada during the five years before you apply. Maple Tracker estimates your total from your dates and trips, using the rules below.</p>
-        </div>
-
-        <figure class="example">
-          <figcaption class="example-head">
-            <span class="tag" data-i18n="how.exampleTag">Example</span>
-            <p data-i18n="how.exampleCase">Permanent resident for 2 years, in Canada for 3 years before that, 60 days abroad.</p>
-          </figcaption>
-          <div class="timeline" role="img" aria-label="Five-year timeline: three years in Canada before permanent residence, then two years as a permanent resident with two trips abroad" data-i18n-aria-label="how.timelineLabel">
-            <div class="timeline-bar">
-              <span class="seg-pre" style="flex: 0 0 60%"></span>
-              <span class="seg-pr" style="flex: 0 0 16.44%"></span>
-              <span class="seg-away" style="flex: 0 0 1.37%"></span>
-              <span class="seg-pr" style="flex: 0 0 10.96%"></span>
-              <span class="seg-away" style="flex: 0 0 1.92%"></span>
-              <span class="seg-pr" style="flex: 1 0 0"></span>
-            </div>
-            <div class="timeline-axis" aria-hidden="true">
-              <span class="tick-start" data-i18n="how.axisStart">5 years ago</span>
-              <span class="tick-pr" data-i18n="how.axisPr">PR date</span>
-              <span class="tick-end" data-i18n="how.axisEnd">Today</span>
-            </div>
-          </div>
-          <ul class="legend">
-            <li><i class="seg-pre"></i><span data-i18n="how.legendPre">Before PR: each day counts as half</span></li>
-            <li><i class="seg-pr"></i><span data-i18n="how.legendPr">As a permanent resident: each day counts</span></li>
-            <li><i class="seg-away"></i><span data-i18n="how.legendAway">Outside Canada: not counted</span></li>
-          </ul>
-          <dl class="tally">
-            <div><dt data-i18n="how.tallyPr">Days in Canada as a permanent resident (730 − 60)</dt><dd>670</dd></div>
-            <div><dt data-i18n="how.tallyPre">Credit for time before PR (half of 1,095, capped at 365)</dt><dd>365</dd></div>
-            <div class="tally-total"><dt data-i18n="how.tallyTotal">Total</dt><dd data-i18n-html="how.tallyValue">1,035 <small>of 1,095</small></dd></div>
-          </dl>
-          <div class="meter" aria-hidden="true"><span style="width: 94.5%"></span></div>
-          <p class="status" data-i18n="how.status">60 days to go</p>
-        </figure>
-
-        <ul class="rules">
-          <li><h3 data-i18n="how.ruleOneTitle">1,095 days in five years</h3><p data-i18n="how.ruleOneBody">Only the five years before your application count toward the total.</p></li>
-          <li><h3 data-i18n="how.ruleTwoTitle">Time before PR counts half</h3><p data-i18n="how.ruleTwoBody">Each day spent in Canada as a temporary resident or protected person counts as half a day, up to 365 days.</p></li>
-          <li><h3 data-i18n="how.ruleThreeTitle">Travel days count as present</h3><p data-i18n="how.ruleThreeBody">The day you leave and the day you return are both counted as days in Canada.</p></li>
-        </ul>
-        <p class="note" data-i18n-html="how.note">Maple Tracker provides an estimate and does not determine your eligibility. Check your dates against the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship.html">official IRCC guidance</a> before you apply.</p>
-      </div>
-    </section>
-
     <section class="section" id="features">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 data-i18n="features.title">What Maple Tracker does</h2>
-          <p class="lead" data-i18n="features.lead">Your dates, your trips and your test preparation, in one app.</p>
+      <div class="shell">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-i18n="features.eyebrow">The whole picture</p>
+          <h2 data-i18n-html="features.title">Less counting.<br><em>More confidence.</em></h2>
+          <p data-i18n="features.lead">Maple Tracker turns dates, trips, and residency rules into a dashboard you can understand at a glance.</p>
         </div>
 
-        <div class="feature-grid">
-          <article class="feature">
-            <div class="feature-visual" aria-hidden="true">
-              <div class="ui">
-                <span class="ui-label" data-i18n="ui.dashLabel">Days present in Canada</span>
-                <div class="ui-figure"><strong data-i18n="ui.dashValue">1,035</strong><span data-i18n="ui.dashUnit">days total</span></div>
-                <div class="meter"><span style="width: 94.5%"></span></div>
-                <div class="ui-row"><span data-i18n="ui.dashSince">Since permanent residence</span><span data-i18n="ui.dashRatio">1,035 / 1,095</span></div>
-                <p class="status" data-i18n="ui.dashStatus">60 days remaining</p>
-              </div>
+        <div class="bento">
+          <article class="tile tile-wide reveal">
+            <div class="tile-copy">
+              <h3 data-i18n="features.dashTitle">Your path, calculated daily.</h3>
+              <p data-i18n="features.dashBody">Days present, days outside Canada, days remaining and a projected date, without rebuilding a spreadsheet.</p>
             </div>
-            <div class="feature-body">
-              <h3 data-i18n="features.dashTitle">A dashboard that stays current</h3>
-              <p data-i18n="features.dashBody">Days present, days outside Canada, days remaining and a projected date, recalculated every day.</p>
+            <div class="dash" aria-hidden="true">
+              <div class="ring">
+                <svg viewBox="0 0 240 240"><circle class="ring-track" cx="120" cy="120" r="104"/><circle class="ring-progress" cx="120" cy="120" r="104"/></svg>
+                <div class="ring-label"><strong>94%</strong><span data-i18n="ui.complete">complete</span></div>
+              </div>
+              <div class="stats">
+                <div><small data-i18n="ui.present">Days present</small><strong class="is-green" data-i18n="ui.presentValue">1,035</strong></div>
+                <div><small data-i18n="ui.away">Days outside Canada</small><strong class="is-red">60</strong></div>
+                <div><small data-i18n="ui.remaining">Days remaining</small><strong>60</strong></div>
+              </div>
             </div>
           </article>
 
-          <article class="feature">
-            <div class="feature-visual" aria-hidden="true">
-              <div class="ui">
-                <span class="ui-label" data-i18n="ui.tripsLabel">Travel history</span>
-                <div class="trip">
-                  <span class="trip-code">FR</span>
-                  <span class="trip-main"><strong>France</strong><span data-i18n="ui.tripOneDates">Jul 3 – Jul 29, 2026</span></span>
-                  <span class="trip-days" data-i18n="ui.tripOneDays">−25 days</span>
-                </div>
-                <div class="trip">
-                  <span class="trip-code">US</span>
-                  <span class="trip-main"><strong data-i18n="ui.tripTwoName">United States</strong><span data-i18n="ui.tripTwoDates">Jan 5 – Feb 10, 2026</span><span class="chip" data-i18n="ui.tripAuto">Detected automatically</span></span>
-                  <span class="trip-days" data-i18n="ui.tripTwoDays">−35 days</span>
-                </div>
+          <article class="tile reveal">
+            <div class="tile-art" aria-hidden="true">
+              <div class="trips">
+                <div class="trip"><i class="flag flag-fr"></i><span class="trip-main"><strong>France</strong><span data-i18n="ui.tripOneDates">Jul 3 – Jul 29, 2026</span></span><span class="trip-days" data-i18n="ui.tripOneDays">−25 days</span></div>
+                <div class="trip"><i class="flag flag-jp"></i><span class="trip-main"><strong data-i18n="ui.tripTwoName">Japan</strong><span data-i18n="ui.tripTwoDates">Jan 5 – Feb 10, 2026</span></span><span class="trip-days" data-i18n="ui.tripTwoDays">−35 days</span></div>
+                <span class="auto" data-i18n="ui.tripAuto">Detected automatically</span>
               </div>
             </div>
-            <div class="feature-body">
-              <h3 data-i18n="features.tripsTitle">A complete travel history</h3>
-              <p data-i18n="features.tripsBody">Add a trip in a few seconds, with notes if you need them. Optional automatic detection records when you leave Canada and when you return.</p>
-            </div>
+            <h3 data-i18n="features.tripsTitle">Trips that stay organized.</h3>
+            <p data-i18n="features.tripsBody">Add a trip in a few seconds, with notes if you need them. Optional automatic detection records when you leave Canada and when you return.</p>
           </article>
 
-          <article class="feature">
-            <div class="feature-visual" aria-hidden="true">
-              <div class="ui">
-                <span class="chip" data-i18n="ui.quizTheme">Politics</span>
-                <p class="quiz-question" data-i18n="ui.quizQuestion">How many electoral districts are there in Canada?</p>
+          <article class="tile tile-paper reveal">
+            <div class="tile-art" aria-hidden="true">
+              <div class="quiz">
+                <span class="quiz-chip" data-i18n="ui.quizTheme">Politics</span>
+                <strong data-i18n="ui.quizQuestion">How many electoral districts are there in Canada?</strong>
                 <div class="quiz-option">308</div>
-                <div class="quiz-option is-correct">343<svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></div>
+                <div class="quiz-option is-correct">343<span class="check"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span></div>
                 <p class="quiz-why" data-i18n="ui.quizWhy">Canada is divided into 343 electoral districts, also called ridings or constituencies.</p>
               </div>
             </div>
-            <div class="feature-body">
-              <h3 data-i18n="features.quizTitle">Practice for the citizenship test</h3>
-              <p data-i18n="features.quizBody">170 questions across six themes, with content for your province. Each answer comes with an explanation.</p>
-            </div>
+            <h3 data-i18n="features.quizTitle">Study when you have a minute.</h3>
+            <p data-i18n="features.quizBody">170 questions across six themes, with content for your province. Each answer comes with an explanation.</p>
           </article>
 
-          <article class="feature">
-            <div class="feature-visual" aria-hidden="true">
-              <div class="ui">
-                <div class="report-head"><strong data-i18n="ui.reportTitle">Presence report</strong><span class="chip">PDF</span></div>
-                <div class="report-row"><span data-i18n="ui.reportPresent">Days present</span><b data-i18n="ui.dashRatio">1,035 / 1,095</b></div>
-                <div class="report-row"><span data-i18n="ui.reportCredit">Credit before PR</span><b>365</b></div>
-                <div class="report-row"><span data-i18n="ui.reportAway">Days outside Canada</span><b>60</b></div>
-                <div class="report-row"><span data-i18n="ui.reportTrips">Trips</span><b>2</b></div>
-              </div>
-            </div>
-            <div class="feature-body">
-              <h3 data-i18n="features.reportTitle">A PDF report for your records</h3>
+          <article class="tile tile-wide tile-report reveal">
+            <div class="tile-copy">
+              <h3 data-i18n="features.reportTitle">A record you can take with you.</h3>
               <p data-i18n="features.reportBody">Export your presence summary and travel history as a PDF, in English and French, and share it from your phone.</p>
             </div>
+            <div class="sheet" aria-hidden="true">
+              <div class="sheet-brand"><img src="app-icon-128.png" width="22" height="22" alt=""><strong data-i18n="ui.reportTitle">Presence report</strong><span>PDF</span></div>
+              <div class="sheet-row"><span data-i18n="ui.reportCredit">Credit before PR</span><b>365</b></div>
+              <div class="sheet-row"><span data-i18n="ui.away">Days outside Canada</span><b>60</b></div>
+              <div class="sheet-row"><span data-i18n="ui.reportTrips">Trips</span><b>2</b></div>
+              <div class="sheet-total" data-i18n="ui.reportTotal">1,035 days present</div>
+            </div>
+          </article>
+
+          <article class="tile tile-third reveal">
+            <div class="tile-art" aria-hidden="true">
+              <div class="home">
+                <div class="widget">
+                  <img src="app-icon-128.png" width="20" height="20" alt="">
+                  <div><strong data-i18n="ui.presentValue">1,035</strong><small data-i18n="ui.widgetLabel">days present</small></div>
+                  <div class="meter"><span style="width: 94.5%"></span></div>
+                </div>
+                <i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+            <h3 data-i18n="extras.widgetTitle">On your home screen.</h3>
+            <p data-i18n="extras.widgetBody">A widget shows your count without opening the app.</p>
+          </article>
+
+          <article class="tile tile-third reveal">
+            <div class="tile-art" aria-hidden="true">
+              <div class="hello">
+                <span class="l">Hello</span><em>Bonjour</em><span lang="zh-Hans">你好</span><span class="xl">Hola</span><span lang="ar">مرحبا</span><span class="l" lang="ja">こんにちは</span><span>Ciao</span><span class="l" lang="uk">Привіт</span><span lang="ko">안녕하세요</span><span class="xl">Olá</span><span lang="pa">ਸਤ ਸ੍ਰੀ ਅਕਾਲ</span><span class="l">Hallo</span><span lang="el">Γεια</span><span lang="ru">Привет</span>
+              </div>
+            </div>
+            <h3 data-i18n="extras.langTitle">In 14 languages.</h3>
+            <p data-i18n="extras.langBody">Study for the test in the language you are most comfortable with.</p>
+          </article>
+
+          <article class="tile tile-third reveal">
+            <div class="tile-art" aria-hidden="true">
+              <div class="themes">
+                <div class="theme-card theme-light"><b data-i18n="ui.presentValue">1,035</b><i></i><i></i></div>
+                <div class="theme-card theme-dark"><b data-i18n="ui.presentValue">1,035</b><i></i><i></i></div>
+              </div>
+            </div>
+            <h3 data-i18n="extras.themeTitle">Light or dark.</h3>
+            <p data-i18n="extras.themeBody">Follow your system setting or choose your own.</p>
           </article>
         </div>
-
-        <ul class="extras">
-          <li><h3 data-i18n="extras.widgetTitle">Home screen widget</h3><p data-i18n="extras.widgetBody">See your count without opening the app.</p></li>
-          <li><h3 data-i18n="extras.langTitle">Quiz in 14 languages</h3><p data-i18n="extras.langBody">Study in the language you are most comfortable with.</p></li>
-          <li><h3 data-i18n="extras.themeTitle">Light and dark themes</h3><p data-i18n="extras.themeBody">Follow your system setting or choose your own.</p></li>
-          <li><h3 data-i18n="extras.notifyTitle">Reminders</h3><p data-i18n="extras.notifyBody">Optional notifications about your trips and your progress.</p></li>
-        </ul>
       </div>
     </section>
 
-    <section class="section band" id="download">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 data-i18n="download.title">Available on iPhone and Android</h2>
-          <p class="lead" data-i18n="download.lead">The same tracking, trips, quiz and reports on both platforms.</p>
+    <section class="section paper" id="how">
+      <div class="shell calc-grid">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-i18n="how.eyebrow">The 1,095-day rule</p>
+          <h2 data-i18n-html="how.title">Your count,<br><em>made clear.</em></h2>
+          <p data-i18n="how.lead">To apply for citizenship, you need 1,095 days of physical presence in Canada during the five years before you apply. Maple Tracker estimates your total from your dates and trips.</p>
+        </div>
+
+        <div>
+          <figure class="calc-card reveal">
+            <figcaption class="calc-head">
+              <span class="tag" data-i18n="how.exampleTag">Example</span>
+              <p data-i18n="how.exampleCase">Permanent resident for 2 years, in Canada for 3 years before that, 60 days abroad.</p>
+            </figcaption>
+            <div role="img" aria-label="Five-year timeline: three years in Canada before permanent residence, then two years as a permanent resident with two trips abroad" data-i18n-aria-label="how.timelineLabel">
+              <div class="timeline-bar">
+                <span class="seg-pre" style="flex: 0 0 60%"></span>
+                <span class="seg-pr" style="flex: 0 0 16%"></span>
+                <span class="seg-away" style="flex: 0 0 1.37%"></span>
+                <span class="seg-pr" style="flex: 0 0 10.6%"></span>
+                <span class="seg-away" style="flex: 0 0 1.92%"></span>
+                <span class="seg-pr" style="flex: 1 0 0"></span>
+              </div>
+              <div class="timeline-axis" aria-hidden="true">
+                <span class="tick-start" data-i18n="how.axisStart">5 years ago</span>
+                <span class="tick-pr" data-i18n="how.axisPr">PR date</span>
+                <span class="tick-end" data-i18n="how.axisEnd">Today</span>
+              </div>
+            </div>
+            <ul class="legend">
+              <li><i class="seg-pre"></i><span data-i18n="how.legendPre">Before PR: each day counts as half</span></li>
+              <li><i class="seg-pr"></i><span data-i18n="how.legendPr">As a permanent resident: each day counts</span></li>
+              <li><i class="seg-away"></i><span data-i18n="how.legendAway">Outside Canada: not counted</span></li>
+            </ul>
+            <dl class="tally">
+              <div><dt data-i18n="how.tallyPr">Days in Canada as a permanent resident (730 − 60)</dt><dd>670</dd></div>
+              <div><dt data-i18n="how.tallyPre">Credit for time before PR (half of 1,095, capped at 365)</dt><dd>365</dd></div>
+              <div class="tally-total"><dt data-i18n="how.tallyTotal">Total</dt><dd data-i18n-html="how.tallyValue">1,035 <small>of 1,095</small></dd></div>
+            </dl>
+            <div class="meter" aria-hidden="true"><span style="width: 94.5%"></span></div>
+            <p class="togo" data-i18n="how.status">60 days to go</p>
+          </figure>
+
+          <ul class="rules">
+            <li class="reveal"><b aria-hidden="true">5</b><div><h3 data-i18n="how.ruleOneTitle">1,095 days in five years</h3><p data-i18n="how.ruleOneBody">Only the five years before your application count toward the total.</p></div></li>
+            <li class="reveal"><b aria-hidden="true">½</b><div><h3 data-i18n="how.ruleTwoTitle">Time before PR counts half</h3><p data-i18n="how.ruleTwoBody">Each day spent in Canada as a temporary resident or protected person counts as half a day, up to 365 days.</p></div></li>
+            <li class="reveal"><b aria-hidden="true">+1</b><div><h3 data-i18n="how.ruleThreeTitle">Travel days count as present</h3><p data-i18n="how.ruleThreeBody">The day you leave and the day you return are both counted as days in Canada.</p></div></li>
+          </ul>
+          <p class="note" data-i18n-html="how.note">Maple Tracker provides an estimate and does not determine your eligibility. Check your dates against the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship.html">official IRCC guidance</a> before you apply.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="download">
+      <div class="shell">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-i18n="download.eyebrow">Two platforms</p>
+          <h2 data-i18n-html="download.title">On iPhone.<br><em>And now on Android.</em></h2>
+          <p data-i18n="download.lead">The same tracking, trips, quiz and reports on both platforms.</p>
         </div>
         <div class="platforms">
-          <article class="platform">
+          <article class="tile platform reveal">
+            <span class="platform-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.7 19.5c-.8 1.2-1.7 2.5-3 2.5-1.4 0-1.8-.8-3.3-.8s-2 .8-3.3.8c-1.3.1-2.3-1.3-3.1-2.5C4.3 17 3 12.5 4.7 9.4c.9-1.5 2.4-2.5 4.1-2.5 1.3 0 2.5.9 3.3.9.8 0 2.3-1.1 3.8-.9.7 0 2.5.3 3.6 2-.1.1-2.1 1.3-2.1 3.8 0 3 2.7 4 2.7 4s-.4 1.8-1.4 2.8zM15.9 2c.1 1.2-.3 2.4-1 3.2-.7.9-1.8 1.5-3 1.4-.1-1.1.4-2.3 1-3.1.8-.8 2-1.4 3-1.5z"/></svg></span>
             <div class="platform-head"><h3>iPhone</h3><p data-i18n="download.iosReq">Requires iOS 18.6 or later</p></div>
             <ul class="checks">
-              <li data-i18n="download.iosOne">Optional sync through your private iCloud account</li>
-              <li data-i18n="download.iosTwo">Restore your records on a new iPhone</li>
-              <li data-i18n="download.iosThree">Home screen widget</li>
+              <li><span class="check"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><span data-i18n="download.iosOne">Optional sync through your private iCloud account</span></li>
+              <li><span class="check"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><span data-i18n="download.iosTwo">Restore your records on a new iPhone</span></li>
+              <li><span class="check"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><span data-i18n="download.iosThree">Home screen widget</span></li>
             </ul>
             <a class="store" href="https://apps.apple.com/ca/app/maple-tracker/id6758927692" aria-label="Download Maple Tracker on the App Store" data-i18n-aria-label="store.appleLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.7 19.5c-.8 1.2-1.7 2.5-3 2.5-1.4 0-1.8-.8-3.3-.8s-2 .8-3.3.8c-1.3.1-2.3-1.3-3.1-2.5C4.3 17 3 12.5 4.7 9.4c.9-1.5 2.4-2.5 4.1-2.5 1.3 0 2.5.9 3.3.9.8 0 2.3-1.1 3.8-.9.7 0 2.5.3 3.6 2-.1.1-2.1 1.3-2.1 3.8 0 3 2.7 4 2.7 4s-.4 1.8-1.4 2.8zM15.9 2c.1 1.2-.3 2.4-1 3.2-.7.9-1.8 1.5-3 1.4-.1-1.1.4-2.3 1-3.1.8-.8 2-1.4 3-1.5z"/></svg><span><small data-i18n="store.appleSmall">Download on the</small>App Store</span></a>
           </article>
-          <article class="platform">
-            <div class="platform-head"><h3>Android</h3><p data-i18n="download.androidReq">Requires Android 9 or later</p></div>
+          <article class="tile platform reveal">
+            <span class="platform-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.6 2.9v18.2L12.5 12z"/><path d="M4.9 2.2l8.5 8.9 2.5-2.6z"/><path d="M4.9 21.8l8.5-8.9 2.5 2.6z"/><path d="M16.9 9.1l3.9 2.2c.6.4.6 1 0 1.4l-3.9 2.2-2.7-2.9z"/></svg></span>
+            <div class="platform-head"><h3>Android <span class="announce-tag" data-i18n="hero.new">New</span></h3><p data-i18n="download.androidReq">Requires Android 9 or later</p></div>
             <ul class="checks">
-              <li data-i18n="download.androidOne">Records stored on your device</li>
-              <li data-i18n="download.androidTwo">Back up and restore with a file you control</li>
-              <li data-i18n="download.androidThree">Home screen widget</li>
+              <li><span class="check"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><span data-i18n="download.androidOne">Records stored on your device</span></li>
+              <li><span class="check"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><span data-i18n="download.androidTwo">Back up and restore with a file you control</span></li>
+              <li><span class="check"><svg viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span><span data-i18n="download.androidThree">Home screen widget</span></li>
             </ul>
             <a class="store" href="https://play.google.com/store/apps/details?id=com.axeltringa.mapletracker" aria-label="Get Maple Tracker on Google Play" data-i18n-aria-label="store.googleLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.9v18.2L12.5 12z"/><path d="M4.9 2.2l8.5 8.9 2.5-2.6z"/><path d="M4.9 21.8l8.5-8.9 2.5 2.6z"/><path d="M16.9 9.1l3.9 2.2c.6.4.6 1 0 1.4l-3.9 2.2-2.7-2.9z"/></svg><span><small data-i18n="store.googleSmall">Get it on</small>Google Play</span></a>
           </article>
@@ -256,28 +298,33 @@
       </div>
     </section>
 
-    <section class="section" id="privacy">
-      <div class="wrap split">
-        <div class="section-head">
-          <h2 data-i18n="privacy.title">Your records stay yours</h2>
-          <p class="lead" data-i18n="privacy.lead">Maple Tracker works without an account and does not operate a server that receives your trips or your location.</p>
-          <a class="text-link" href="privacy-policy.html"><span data-i18n="privacy.link">Read the privacy policy</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <section class="privacy" id="privacy">
+      <div class="shell">
+        <div class="privacy-panel reveal">
+          <div class="privacy-copy">
+            <p class="eyebrow" data-i18n="privacy.eyebrow">Privacy by default</p>
+            <h2 data-i18n-html="privacy.title">Your travel story<br><em>belongs to you.</em></h2>
+            <p data-i18n="privacy.lead">Maple Tracker works without an account and does not operate a server that receives your trips or your location. Backups and usage statistics are optional, and your data is never used for advertising.</p>
+            <a class="text-link" href="privacy-policy.html"><span data-i18n="privacy.link">Read the privacy policy</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+          <div class="privacy-art" aria-hidden="true">
+            <div class="shield"><svg viewBox="0 0 48 56"><path d="M24 2l19 7v16c0 13-7.8 23.8-19 29C12.8 48.8 5 38 5 25V9l19-7z"/><path d="M17 27l5 5 10-12"/></svg></div>
+            <span class="chip chip-1" data-i18n="privacy.chipOne">No account</span>
+            <span class="chip chip-2" data-i18n="privacy.chipTwo">On your device</span>
+            <span class="chip chip-3" data-i18n="privacy.chipThree">Optional backup</span>
+            <span class="chip chip-4" data-i18n="privacy.chipFour">No advertising</span>
+          </div>
         </div>
-        <ul class="privacy-list">
-          <li><h3 data-i18n="privacy.oneTitle">No account</h3><p data-i18n="privacy.oneBody">Start without giving a name, an email address or immigration documents.</p></li>
-          <li><h3 data-i18n="privacy.twoTitle">Stored on your phone</h3><p data-i18n="privacy.twoBody">Your profile and trips are saved on your device. Backups are optional and stay under your control.</p></li>
-          <li><h3 data-i18n="privacy.threeTitle">Location is optional</h3><p data-i18n="privacy.threeBody">It is only used to detect when you leave Canada and when you return. You can always enter trips by hand.</p></li>
-          <li><h3 data-i18n="privacy.fourTitle">No advertising</h3><p data-i18n="privacy.fourBody">Maple Tracker does not sell personal data or use it for advertising. Usage statistics are optional.</p></li>
-        </ul>
       </div>
     </section>
 
-    <section class="section section-rule" id="faq">
-      <div class="wrap split">
-        <div class="section-head">
-          <h2 data-i18n="faq.title">Frequently asked questions</h2>
+    <section class="section" id="faq">
+      <div class="shell faq-grid">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-i18n="faq.eyebrow">Good to know</p>
+          <h2 data-i18n-html="faq.title">Questions,<br><em>answered clearly.</em></h2>
         </div>
-        <div class="faq-list">
+        <div class="faq-list reveal">
           <details><summary data-i18n="faq.oneQuestion">Is Maple Tracker an official IRCC app?</summary><p data-i18n="faq.oneAnswer">No. Maple Tracker is an independent personal tracking tool and is not affiliated with the Government of Canada. Always verify your eligibility and dates with IRCC before applying.</p></details>
           <details><summary data-i18n="faq.twoQuestion">Does Maple Tracker tell me when I can apply?</summary><p data-i18n="faq.twoAnswer">It shows an estimate of your physical presence and a projected date. It does not assess the other citizenship requirements, so check the official IRCC guidance before you apply.</p></details>
           <details><summary data-i18n="faq.threeQuestion">Is Maple Tracker available on Android?</summary><p data-i18n="faq.threeAnswer">Yes. Maple Tracker is on Google Play for Android 9 and later, and on the App Store for iPhone.</p></details>
@@ -288,24 +335,23 @@
       </div>
     </section>
 
-    <section class="closing">
-      <div class="wrap closing-inner">
-        <div class="closing-copy">
-          <h2 data-i18n="closing.title">Start counting your days today</h2>
-          <p data-i18n="closing.body">Setup takes a few minutes: your PR date, your arrival date and your past trips.</p>
-        </div>
+    <section class="closing paper">
+      <div class="shell closing-inner reveal">
+        <img class="closing-icon" src="app-icon-128.png" width="76" height="76" alt="">
+        <h2 data-i18n-html="closing.title">Make every day<br><em>count.</em></h2>
+        <p data-i18n="closing.body">A clearer view of your path to Canadian citizenship, on iPhone and Android.</p>
         <div class="store-row">
-          <a class="store" href="https://apps.apple.com/ca/app/maple-tracker/id6758927692" aria-label="Download Maple Tracker on the App Store" data-i18n-aria-label="store.appleLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.7 19.5c-.8 1.2-1.7 2.5-3 2.5-1.4 0-1.8-.8-3.3-.8s-2 .8-3.3.8c-1.3.1-2.3-1.3-3.1-2.5C4.3 17 3 12.5 4.7 9.4c.9-1.5 2.4-2.5 4.1-2.5 1.3 0 2.5.9 3.3.9.8 0 2.3-1.1 3.8-.9.7 0 2.5.3 3.6 2-.1.1-2.1 1.3-2.1 3.8 0 3 2.7 4 2.7 4s-.4 1.8-1.4 2.8zM15.9 2c.1 1.2-.3 2.4-1 3.2-.7.9-1.8 1.5-3 1.4-.1-1.1.4-2.3 1-3.1.8-.8 2-1.4 3-1.5z"/></svg><span><small data-i18n="store.appleSmall">Download on the</small>App Store</span></a>
-          <a class="store" href="https://play.google.com/store/apps/details?id=com.axeltringa.mapletracker" aria-label="Get Maple Tracker on Google Play" data-i18n-aria-label="store.googleLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.9v18.2L12.5 12z"/><path d="M4.9 2.2l8.5 8.9 2.5-2.6z"/><path d="M4.9 21.8l8.5-8.9 2.5 2.6z"/><path d="M16.9 9.1l3.9 2.2c.6.4.6 1 0 1.4l-3.9 2.2-2.7-2.9z"/></svg><span><small data-i18n="store.googleSmall">Get it on</small>Google Play</span></a>
+          <a class="store store-ink" href="https://apps.apple.com/ca/app/maple-tracker/id6758927692" aria-label="Download Maple Tracker on the App Store" data-i18n-aria-label="store.appleLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.7 19.5c-.8 1.2-1.7 2.5-3 2.5-1.4 0-1.8-.8-3.3-.8s-2 .8-3.3.8c-1.3.1-2.3-1.3-3.1-2.5C4.3 17 3 12.5 4.7 9.4c.9-1.5 2.4-2.5 4.1-2.5 1.3 0 2.5.9 3.3.9.8 0 2.3-1.1 3.8-.9.7 0 2.5.3 3.6 2-.1.1-2.1 1.3-2.1 3.8 0 3 2.7 4 2.7 4s-.4 1.8-1.4 2.8zM15.9 2c.1 1.2-.3 2.4-1 3.2-.7.9-1.8 1.5-3 1.4-.1-1.1.4-2.3 1-3.1.8-.8 2-1.4 3-1.5z"/></svg><span><small data-i18n="store.appleSmall">Download on the</small>App Store</span></a>
+          <a class="store store-ink" href="https://play.google.com/store/apps/details?id=com.axeltringa.mapletracker" aria-label="Get Maple Tracker on Google Play" data-i18n-aria-label="store.googleLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.9v18.2L12.5 12z"/><path d="M4.9 2.2l8.5 8.9 2.5-2.6z"/><path d="M4.9 21.8l8.5-8.9 2.5 2.6z"/><path d="M16.9 9.1l3.9 2.2c.6.4.6 1 0 1.4l-3.9 2.2-2.7-2.9z"/></svg><span><small data-i18n="store.googleSmall">Get it on</small>Google Play</span></a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-top">
+    <div class="shell footer-top">
       <div class="footer-about">
-        <a class="brand" href="index.html"><img src="app-icon-128.png" width="32" height="32" alt=""><span>Maple Tracker</span></a>
+        <a class="brand" href="index.html"><img src="app-icon-128.png" width="34" height="34" alt=""><span>Maple Tracker</span></a>
         <p data-i18n="footer.tagline">Independent presence tracking for Canadian citizenship, on iPhone and Android.</p>
       </div>
       <div class="footer-col">
@@ -320,7 +366,7 @@
         <a href="mailto:axel@mapletracker.ca">axel@mapletracker.ca</a>
       </div>
     </div>
-    <div class="wrap">
+    <div class="shell">
       <div class="footer-bottom">
         <p data-i18n="footer.disclaimer">Maple Tracker is not affiliated with Immigration, Refugees and Citizenship Canada or the Government of Canada.</p>
         <p>© 2026 Axel Tringa · <span data-i18n="footer.made">Made in Canada</span></p>
@@ -329,5 +375,6 @@
   </footer>
 
   <script src="i18n.js"></script>
+  <script src="motion.js"></script>
 </body>
 </html>
